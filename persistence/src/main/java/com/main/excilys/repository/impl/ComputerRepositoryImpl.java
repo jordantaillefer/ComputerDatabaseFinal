@@ -19,7 +19,7 @@ import com.main.excilys.repository.FieldSort;
 public class ComputerRepositoryImpl implements ComputerRepository {
     private static final String HQL_COUNT_COMPUTER_SEARCH_BY_COMPUTER         = "Select COUNT(c) From Computer as c where c.name like :search";
     private static final String HQL_COUNT_COMPUTER_SEARCH_BY_COMPANY          = "Select COUNT(c) From Computer as c left join c.company as company where company.name like :search";
-    private static final String HQL_SELECT_ALL_COMPUTER                       = "Select c From Computer";
+    private static final String HQL_SELECT_ALL_COMPUTER                       = "From Computer";
     private static final String HQL_SELECT_COMPUTER_SEARCH_ORDER              = "Select c From Computer as c left join c.company as company where c.name like :search order by %s asc";
     private static final String HQL_SELECT_COMPUTER_SEARCH_COMPANY_NAME_ORDER = "Select c From Computer as c left join c.company as company where company.name like :search order by %s asc";
     private static final String HQL_DELETE_COMPUTER_BY_COMPANY                = "delete from Computer c where c.company = :company";
@@ -30,8 +30,6 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     @Override
     public List<Computer> findByNameStartingWith(String search, int numPage, int nbObjectToGet,
             FieldSort sort) {
-        System.out.println("search : " + search + "\nnumPage : " + numPage + "\nnbObjectToGet : "
-                + nbObjectToGet + "\nsort : " + sort.toString());
         String searchPattern = search != null ? search + "%" : "%";
         String hqlQuery = String.format(HQL_SELECT_COMPUTER_SEARCH_ORDER, "c." + sort.toString());
         TypedQuery<Computer> query = this.session.createQuery(hqlQuery, Computer.class)

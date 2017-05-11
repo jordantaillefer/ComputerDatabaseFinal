@@ -124,9 +124,6 @@ public class Computer implements Serializable {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
     if (obj == null) {
       return false;
     }
@@ -134,9 +131,6 @@ public class Computer implements Serializable {
       return false;
     }
     Computer other = (Computer) obj;
-    if (company.equals(other.company)) {
-      return false;
-    }
     if (discontinued == null) {
       if (other.discontinued != null) {
         return false;
