@@ -1,22 +1,18 @@
 package com.main.excilys.service;
 
-import com.main.excilys.mapper.ComputerToDtoMapper;
-import com.main.excilys.model.Computer;
-import com.main.excilys.model.dto.ComputerDto;
-import com.main.excilys.repository.ComputerRepository;
-import com.main.excilys.util.OptionValidator;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Repository;
+
+import com.main.excilys.mapper.ComputerToDtoMapper;
+import com.main.excilys.model.Computer;
+import com.main.excilys.model.dto.ComputerDto;
+import com.main.excilys.repository.ComputerRepository;
+import com.main.excilys.repository.FieldSort;
+import com.main.excilys.util.OptionValidator;
 
 @Repository
 public class ComputerService {
@@ -32,7 +28,8 @@ public class ComputerService {
    * @return the computer selected
    */
   public ComputerDto getComputerById(long idToSelect) {
-    return ComputerToDtoMapper.toComputerDto(computerRepository.findOne(idToSelect));
+        // TODO Handle the Optional
+        return ComputerToDtoMapper.toComputerDto(computerRepository.findOne(idToSelect).get());
   }
 
   /**
@@ -43,7 +40,8 @@ public class ComputerService {
    * @return the generated id of the computer
    */
   public long createComputer(ComputerDto newComputer) {
-    return computerRepository.save(ComputerToDtoMapper.toComputer(newComputer)).getId();
+        // TODO Handle the Optional
+        return computerRepository.save(ComputerToDtoMapper.toComputer(newComputer)).get().getId();
   }
 
   /**
@@ -55,7 +53,7 @@ public class ComputerService {
    */
   public long getNbComputer(Map<String, String> options) {
     OptionValidator.validate(options);
-    return computerRepository.count();
+        return computerRepository.countSearchByComputerName(options);
   }
 
   /**
@@ -94,14 +92,11 @@ public class ComputerService {
   public List<ComputerDto> getComputerInRange(int numPage, int nbObjectToGet,
       Map<String, String> options) {
     OptionValidator.validate(options);
-
-    Sort sort = options.get("column") != null && !options.get("column").isEmpty()
-        ? new Sort(new Order(Direction.ASC, options.get("column")))
-        : new Sort(new Order(Direction.ASC, "id"));
-    PageRequest pageRequest = new PageRequest(numPage, nbObjectToGet, sort);
-    Page<Computer> pageComputer = computerRepository.findByNameStartingWith(options.get("search"),
-        pageRequest);
+        List<Computer> pageComputer = computerRepository.findByNameStartingWith(
+                options.get("search"),
+                numPage, nbObjectToGet, FieldSort.getFieldSort(options.get("column")));
     List<ComputerDto> listAllComputerDto = new ArrayList<>();
+        System.out.println("nb : " + pageComputer.size());
     pageComputer
         .forEach(computer -> listAllComputerDto.add(ComputerToDtoMapper.toComputerDto(computer)));
 

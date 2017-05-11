@@ -1,14 +1,14 @@
 package com.main.excilys.service;
 
-import com.main.excilys.mapper.CompanyToDtoMapper;
-import com.main.excilys.model.dto.CompanyDto;
-import com.main.excilys.repository.CompanyRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.main.excilys.mapper.CompanyToDtoMapper;
+import com.main.excilys.model.dto.CompanyDto;
+import com.main.excilys.repository.CompanyRepository;
 
 @Repository
 public class CompanyService {
@@ -38,10 +38,12 @@ public class CompanyService {
    * @return the selected company
    */
 
+    // TODO Handle the optional
   public CompanyDto getCompanyById(long idToTest) {
-    return CompanyToDtoMapper.toCompanyDto(companyRepository.findOne(idToTest));
+        return CompanyToDtoMapper.toCompanyDto(companyRepository.findOne(idToTest).get());
   }
 
+    @Deprecated
   public long getNbCompany() {
     return companyRepository.count();
   }

@@ -1,9 +1,18 @@
 package com.main.excilys.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.main.excilys.model.Company;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+public interface CompanyRepository {
 
-public interface CompanyRepository extends JpaRepository<Company, Long> {
+    List<Company> findAll();
+
+    Optional<Company> findOne(long idToTest);
+
+    long count();
+
+    void delete(long idToDelete);
 
 }
