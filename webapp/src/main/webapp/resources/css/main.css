@@ -1,0 +1,146 @@
+.navbar-cdb {
+	height: 64px;
+	width: 70%;
+}
+
+body {
+	background: #EAF0FD;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #FEFEFE;
+	border-top: 1px solid #CCC;
+	height: 60px;
+}
+
+footer .pagination {
+	margin: 10px 0;
+}
+
+footer .btn-group {
+	margin: 10px 10px;
+}
+
+input[type='checkbox'] {
+	margin: 0;
+	padding: 0;
+	border-radius: 5px;
+	white-space: nowrap;
+}
+
+#top-link-block.affix {
+	position: fixed; /* keeps it on the bottom once in view */
+	bottom: 140px;
+	right: 40px;
+}
+
+#bottom-link-block {
+	position: fixed; /* keeps it on the bottom once in view */
+	bottom: 80px;
+	right: 40px;
+}
+
+.fab-goto-top, .fab-goto-bottom {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: #81D4FA;
+	border-radius: 50%;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.fab-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.fab-content i {
+	margin-bottom: 5px;
+}
+
+th:hover, th:hover * {
+	background-color: #D0D0FF;
+	cursor: pointer;
+}
+
+th {
+	width: 23.5%;
+}
+
+#actions {
+	min-height: 72px;
+}
+
+#actions div {
+	display: flex;
+}
+
+#actions a {
+	height: 34px;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+}
+
+.options span:first-child {
+	font-weight: bold;
+}
+
+#header-form-login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #FFF;
+}
+
+#header-form-login * {
+	color: #FFF;
+}
+
+form#header-form-login .group {
+	width: 100%;
+	margin-right: 16px;
+}
+
+.navbar-cdb #brand-cdb {
+	color: #FFF;
+}
+
+.form-login-panel {
+	float: right;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.brand-panel #brand-cdb {
+	padding: 20px 15px 15px 15px;
+}
+
+.picto-flag {
+	width: 24px;
+	height: 24px;
+	margin-left: 16px;
+}
+
+.brand-panel {
+	float: left;
+	display: flex;
+	justify-content : center;
+	align-items :center ;
+}

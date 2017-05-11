@@ -1,0 +1,49 @@
+/bin/
+#javadoc
+/doc/
+/extensions/
+#binary for maven
+/target/
+# Compiled class file
+*.class
+
+build/
+
+#eclipseFile
+.classpath
+.editorconfig
+.checkstyle
+.project
+
+#intelliJFile
+.idea/
+
+target/
+
+.settings/
+
+WebContent/
+
+ComputerDatabase.iml
+
+lib/
+
+# Log file
+*.log
+/log/
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

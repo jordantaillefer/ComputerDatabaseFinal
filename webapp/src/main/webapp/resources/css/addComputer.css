@@ -1,0 +1,108 @@
+.addComputer-panel {
+	width: 100%;
+	height: 100vh;
+}
+
+.title-panel {
+	height: 20vh;
+	position: relative;
+	width: 100%;
+}
+
+.addComputer-title {
+	font-size: 3.5em;
+	color: white;
+	opacity: 1;
+}
+
+.addComputer-overlay {
+	position: absolute; width : 100%;
+	height: 100%;
+	background-image: url(../img/wallpaper_add_computer.jpg);
+	background-size: cover;
+	filter: brightness(50%);
+	-webkit-filter: brightness(50%);
+	-moz-filter: brightness(50%);
+	-o-filter: brightness(50%);
+	-ms-filter: brightness(50%);
+	width: 100%;
+	z-index: -1;
+}
+
+.addComputer-title-panel {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 64px;
+}
+.addComputer-main-panel {
+    height: 80vh;
+    background-color: #eee;
+      display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addComputer-main-panel form {
+	width: 480px;
+	margin: 0em 4em;
+	padding: 0em 2em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	display : flex;
+	align-items : center;
+	justify-content : center;
+	flex-direction : column;
+}
+
+.addComputer-main-panel form:before {
+    background-color: #4a89dc;
+    content: '';
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    height: 64px;
+    width: 546px;
+    /* padding: 0px 2em; */
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px, rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.addComputer-main-panel form:after {
+    background-color: #4a89dc;
+    content: '';
+    display: flex;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    height: 64px;
+    width: 546px;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px, rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.addComputer-main-panel .group {
+	margin-bottom: 45px;
+}
+
+.title-addComputer {
+	display : flex;
+	justify-content : center;
+	align-items : center;
+	height: 64px;
+	margin-bottom: 32px;
+    margin-top: 24px;
+}
+
+#text-addComputer-login {
+    font-size: 2em;
+    color: #4a89dc;
+}
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
