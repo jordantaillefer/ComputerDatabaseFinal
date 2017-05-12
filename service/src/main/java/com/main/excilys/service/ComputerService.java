@@ -96,7 +96,6 @@ public class ComputerService {
                 options.get("search"),
                 numPage, nbObjectToGet, FieldSort.getFieldSort(options.get("column")));
     List<ComputerDto> listAllComputerDto = new ArrayList<>();
-        System.out.println("nb : " + pageComputer.size());
     pageComputer
         .forEach(computer -> listAllComputerDto.add(ComputerToDtoMapper.toComputerDto(computer)));
 

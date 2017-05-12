@@ -1,18 +1,10 @@
 package persistence;
 
-import com.main.excilys.PersistenceContext;
-import com.main.excilys.model.Company;
-import com.main.excilys.model.Computer;
-import com.main.excilys.repository.ComputerRepository;
-import com.main.excilys.repository.DaoException;
-import com.main.excilys.repository.FieldSort;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,6 +15,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.main.excilys.PersistenceContext;
+import com.main.excilys.model.Company;
+import com.main.excilys.model.Computer;
+import com.main.excilys.repository.ComputerRepository;
+import com.main.excilys.repository.DaoException;
+import com.main.excilys.repository.FieldSort;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)

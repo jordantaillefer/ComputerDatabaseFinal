@@ -1,9 +1,11 @@
 package com.main.excilys.repository;
 
+import java.util.Optional;
+
 import com.main.excilys.model.UserRole;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+public interface UserRoleRepository {
 
-public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
+    Optional<UserRole> save(UserRole userRole);
 
 }
