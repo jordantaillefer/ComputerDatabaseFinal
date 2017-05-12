@@ -1,13 +1,13 @@
 # Excilys-Computer-Database ![alt text][logo]
 
 [logo]:http://excilysffg.cluster003.ovh.net/wp-content/uploads/2017/01/excilys495-295.png "Logo Excilys"
-###What is it ?
-####Excilys-Computer-Database is a :
+### What is it ?
+#### Excilys-Computer-Database is a :
 Complete and effective, end-to-end web application for managing large computers database.
 Front-end design up-to-date and user friendly, making managing easy !
 Back-end secured and using populars technologies.
 
-###Developpers 
+### Developpers 
 [Taillefer Jordan](https://github.com/jordantaillefer/)
 [Matthieu Lemaile](https://github.com/MatthieuLemaile/)
 [Boulanger Boris](https://github.com/borisblngr")
