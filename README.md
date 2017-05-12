@@ -8,10 +8,10 @@ Front-end design up-to-date and user friendly, making managing easy !
 Back-end secured and using populars technologies.
 
 ### Developpers 
-[Taillefer Jordan](https://github.com/jordantaillefer/)
-[Matthieu Lemaile](https://github.com/MatthieuLemaile/)
-[Boulanger Boris](https://github.com/borisblngr")
-[Reynier Maxime](https://github.com/MaximeRnR/)
+* [Taillefer Jordan](https://github.com/jordantaillefer/)
+* [Matthieu Lemaile](https://github.com/MatthieuLemaile/)
+* [Boulanger Boris](https://github.com/borisblngr")
+* [Reynier Maxime](https://github.com/MaximeRnR/)
 
 
 
