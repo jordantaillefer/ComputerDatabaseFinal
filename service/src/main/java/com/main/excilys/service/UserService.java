@@ -36,10 +36,10 @@ public class UserService {
     public List<UserDto> findAll() { // TODO consider using lambdas
         List<User> users = userRepository.findAll();
         List<UserDto> userDtos = new ArrayList<>();
-        UserRole role = new UserRole(); // TODO User Daos when implemented
-        role.setRole("ROLE_USER");
+
         for (User user : users) {
-            userDtos.add(UserToDtoMapper.toUserDto(user, role));
+            List<UserRole> roles = userRoleRepository.findRolesForOneUser(user.getUsername());
+            userDtos.add(UserToDtoMapper.toUserDto(user, roles));
         }
         return userDtos;
     }

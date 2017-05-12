@@ -1,5 +1,6 @@
 package com.main.excilys.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.main.excilys.model.UserRole;
@@ -12,5 +13,7 @@ public interface UserRoleRepository {
      * @return the userRoel saved/updated
      */
     Optional<UserRole> save(UserRole userRole);
+
+    List<UserRole> findRolesForOneUser(String username);
 
 }
