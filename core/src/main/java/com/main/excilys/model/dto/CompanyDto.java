@@ -12,9 +12,9 @@ public class CompanyDto {
     this.name = name;
   }
 
-  public CompanyDto() {
-    // TODO Auto-generated constructor stub
-  }
+    public CompanyDto() {
+        // default empty constructor
+    }
 
   public long getId() {
     return id;
