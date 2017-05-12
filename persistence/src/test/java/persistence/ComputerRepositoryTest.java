@@ -148,8 +148,8 @@ public class ComputerRepositoryTest {
 	}
 
 	@Test
-	public void getComputersByNameStartingWithMShouldReturnEmptyListBecauseSearchIsInvalid() {
-		assertEquals(computerRepository.findByNameStartingWith(null, 0, 10, FieldSort.NAME).size(), 0);
+	public void getComputersByNameStartingWithNullShouldReturnDefaultListBecauseSearchIsInvalid() {
+		assertEquals(computerRepository.findByNameStartingWith(null, 0, 10, FieldSort.NAME).size(), 10);
 	}
 
 	@Test
@@ -172,6 +172,7 @@ public class ComputerRepositoryTest {
 	}
 
 	//DELETE 
+	
 	@Test
 	@Transactional
 	public void deleteComputerShouldReturnFalse() {
