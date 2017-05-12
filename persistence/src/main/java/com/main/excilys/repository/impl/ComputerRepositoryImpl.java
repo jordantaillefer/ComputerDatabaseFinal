@@ -39,19 +39,18 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         TypedQuery<Computer> query = this.session.createQuery(hqlQuery, Computer.class)
                 .setMaxResults(nbObjectToGet).setFirstResult(numPage * nbObjectToGet);
         query.setParameter("search", searchPattern);
-        List<Computer> computers = query.getResultList();
-        System.out.println(computers.size());
-        return computers;
+        return query.getResultList();
     }
 
     @Override
     public List<Computer> findByCompanyNameStartingWith(String search, int numPage,
             int nbObjectToGet, FieldSort sort) {
+        String searchPattern = search != null ? search + "%" : "%";
         String hqlQuery = String.format(HQL_SELECT_COMPUTER_SEARCH_COMPANY_NAME_ORDER,
                 "c." + sort.toString());
         TypedQuery<Computer> query = this.session.createQuery(hqlQuery, Computer.class)
                 .setMaxResults(nbObjectToGet).setFirstResult(numPage * nbObjectToGet);
-        query.setParameter("search", search);
+        query.setParameter("search", searchPattern);
         return query.getResultList();
     }
 

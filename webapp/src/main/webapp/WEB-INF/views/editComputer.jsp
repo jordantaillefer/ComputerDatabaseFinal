@@ -11,6 +11,7 @@
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/toaster.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/material.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 </head>
 <body id="editComputer">
 <header class="navbar navbar-inverse navbar-fixed-top">
