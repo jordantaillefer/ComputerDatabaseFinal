@@ -11,4 +11,12 @@ public interface UserRepository {
 
     List<User> findAll();
 
+    List<User> findByNameStartingWith(String search, int numPage, int nbObjecttoGet);
+
+    int countSearchByName(String search);
+
+    Optional<User> findOne(String username);
+
+    void delete(String username);
+
 }
