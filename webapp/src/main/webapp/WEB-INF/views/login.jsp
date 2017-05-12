@@ -9,6 +9,7 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>

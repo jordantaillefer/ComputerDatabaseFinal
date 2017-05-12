@@ -2,6 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
  
+ 
 <div class="container nav navbar-cdb">
 	<div class="brand-panel">
 		<a class="navbar-brand" id="brand-cdb" href="dashboard?page=0&column=${ options.sort }&search=${options.search }&nbObject=${nbObjectPerPage}"> 
