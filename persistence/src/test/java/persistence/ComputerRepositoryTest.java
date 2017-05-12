@@ -137,11 +137,6 @@ public class ComputerRepositoryTest {
 		assertTrue(computers.get(0).equals(computer));
 	}
 
-	@Test(expected=DaoException.class)
-	public void getComputersByNameStartingWithMShouldThrowExceptionBecauseNbObjectToGetIsInvalid() {
-		computerRepository.findByNameStartingWith("m", 8, 17, FieldSort.NAME);
-	}
-
 	@Test
 	public void getComputersByNameStartingWithMShouldReturnEmptyListBecauseNumPageIsInvalid() {
 		assertEquals(computerRepository.findByNameStartingWith("m", 8, 10, FieldSort.NAME).size(), 0);
