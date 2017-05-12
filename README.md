@@ -1,13 +1,8 @@
-# RnR-Computer-Database
+# Excilys-Computer-Database
 
 [Excilys Training formation](https://github.com/excilys/training-java "Github of the formation")
 
 A 2-month fulltime java training around an incremental project. Java / JSP / Servlet / Maven / JUnit / Mockito / Selenium / Spring / Hibernate / JPA / Hikari CP / Jackson / Spring MVC / Spring Security / Gatling / Docker
-
-[WebSite of my project](http://52.53.230.21:32810/ComputerDatabase/dashboard "Website")
-
-
-
 
 ### Dependencies
 
