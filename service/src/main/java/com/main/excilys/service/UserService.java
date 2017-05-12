@@ -1,15 +1,19 @@
 package com.main.excilys.service;
 
-import com.main.excilys.mapper.UserToDtoMapper;
-import com.main.excilys.model.UserRole;
-import com.main.excilys.model.dto.UserDto;
-import com.main.excilys.repository.UserRepository;
-import com.main.excilys.repository.UserRoleRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.main.excilys.mapper.UserToDtoMapper;
+import com.main.excilys.model.User;
+import com.main.excilys.model.UserRole;
+import com.main.excilys.model.dto.UserDto;
+import com.main.excilys.repository.UserRepository;
+import com.main.excilys.repository.UserRoleRepository;
 
 @Repository
 public class UserService {
@@ -28,5 +32,16 @@ public class UserService {
     userRoleRepository.save(new UserRole(userDto.getUsername(), "USER"));
 
   }
+
+    public List<UserDto> findAll() { // TODO consider using lambdas
+        List<User> users = userRepository.findAll();
+        List<UserDto> userDtos = new ArrayList<>();
+        UserRole role = new UserRole(); // TODO User Daos when implemented
+        role.setRole("ROLE_USER");
+        for (User user : users) {
+            userDtos.add(UserToDtoMapper.toUserDto(user, role));
+        }
+        return userDtos;
+    }
 
 }
