@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.main.excilys.model.Company;
 import com.main.excilys.repository.CompanyRepository;
+import com.main.excilys.repository.DaoException;
 
 @Repository
 public class CompanyRepositoryImpl implements CompanyRepository {
@@ -39,8 +40,12 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void delete(long idToDelete) {
-        Company company = this.session.find(Company.class, idToDelete);
-        this.session.remove(company);
+        try {
+            Company company = this.session.find(Company.class, idToDelete);
+            this.session.remove(company);
+        } catch (IllegalArgumentException e) {
+            throw new DaoException(e);
+        }
     }
 
 }

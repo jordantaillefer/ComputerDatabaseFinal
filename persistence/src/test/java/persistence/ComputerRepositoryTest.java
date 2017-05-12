@@ -1,18 +1,11 @@
 package persistence;
 
-import com.main.excilys.PersistenceContext;
-import com.main.excilys.model.Company;
-import com.main.excilys.model.Computer;
-import com.main.excilys.repository.ComputerRepository;
-import com.main.excilys.repository.DaoException;
-import com.main.excilys.repository.FieldSort;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,6 +16,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.main.excilys.PersistenceContext;
+import com.main.excilys.model.Company;
+import com.main.excilys.model.Computer;
+import com.main.excilys.repository.ComputerRepository;
+import com.main.excilys.repository.DaoException;
+import com.main.excilys.repository.FieldSort;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -137,24 +137,49 @@ public class ComputerRepositoryTest {
 		assertTrue(computers.get(0).equals(computer));
 	}
 
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void getComputersByNameStartingWithMShouldRThrowExceptionBecauseNbObjectToGetIsInvalid() {
-		List<Computer> computers = computerRepository.findByNameStartingWith("m", 8, 17, FieldSort.NAME);
-		computer = new Computer();
-		computer.setId(26);
-		computer = computerRepository.findOne(computer.getId()).get();
-		assertTrue(computers.get(0).equals(computer));
+	@Test
+	public void getComputersByNameStartingWithMShouldReturnEmptyListBecauseNumPageIsInvalid() {
+		assertEquals(computerRepository.findByNameStartingWith("m", 8, 10, FieldSort.NAME).size(), 0);
 	}
-	
-	@Test(expected=DaoException.class)
-	public void getComputersByNameStartingWithMShouldRThrowExceptionBecauseNumPageIsInvalid() {
-		computerRepository.findByNameStartingWith("m", 8, 10, FieldSort.NAME);
+
+	@Test
+	public void getComputersByNameStartingWithNullShouldReturnDefaultListBecauseSearchIsInvalid() {
+		assertEquals(computerRepository.findByNameStartingWith(null, 0, 10, FieldSort.NAME).size(), 10);
 	}
-	
+
 	@Test
 	public void getAllComputersShouldReturn574Computers() {
 		List<Computer> computers = computerRepository.findAll();
 		assertEquals(computers.size(), 574);
+	}
+
+	//UPDATE 
+
+	@Test
+	@Transactional
+	public void updateComputerShouldReturnModifiedComputer() {
+		computer.setId(574);
+		computer.setName("iPhone 4S_modified");
+		computerRepository.save(computer);
+		assertEquals(computer.getName(), computerRepository.findOne(574).get().getName());
+		computer.setName("iPhone 4S");
+		computerRepository.save(computer);
+	}
+
+	//DELETE 
+	
+	@Test
+	@Transactional
+	public void deleteComputerShouldReturnFalse() {
+		long idGenerated = computerRepository.save(computer).get().getId();
+		computerRepository.delete(idGenerated);
+		assertFalse(computerRepository.findOne(idGenerated).isPresent());
+	}
+	
+	@Test(expected=DaoException.class)
+	@Transactional
+	public void deleteComputerShouldThrowExceptionBecauseIdisInvalid() {
+		computerRepository.delete(-1L);
 	}
 
 
