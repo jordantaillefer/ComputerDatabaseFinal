@@ -1,6 +1,7 @@
 package persistence;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
@@ -136,24 +137,53 @@ public class ComputerRepositoryTest {
 		assertTrue(computers.get(0).equals(computer));
 	}
 
-	@Test(expected=IndexOutOfBoundsException.class)
-	public void getComputersByNameStartingWithMShouldRThrowExceptionBecauseNbObjectToGetIsInvalid() {
-		List<Computer> computers = computerRepository.findByNameStartingWith("m", 8, 17, FieldSort.NAME);
-		computer = new Computer();
-		computer.setId(26);
-		computer = computerRepository.findOne(computer.getId()).get();
-		assertTrue(computers.get(0).equals(computer));
-	}
-	
 	@Test(expected=DaoException.class)
-	public void getComputersByNameStartingWithMShouldRThrowExceptionBecauseNumPageIsInvalid() {
-		computerRepository.findByNameStartingWith("m", 8, 10, FieldSort.NAME);
+	public void getComputersByNameStartingWithMShouldThrowExceptionBecauseNbObjectToGetIsInvalid() {
+		computerRepository.findByNameStartingWith("m", 8, 17, FieldSort.NAME);
 	}
-	
+
+	@Test
+	public void getComputersByNameStartingWithMShouldReturnEmptyListBecauseNumPageIsInvalid() {
+		assertEquals(computerRepository.findByNameStartingWith("m", 8, 10, FieldSort.NAME).size(), 0);
+	}
+
+	@Test
+	public void getComputersByNameStartingWithMShouldReturnEmptyListBecauseSearchIsInvalid() {
+		assertEquals(computerRepository.findByNameStartingWith(null, 0, 10, FieldSort.NAME).size(), 0);
+	}
+
 	@Test
 	public void getAllComputersShouldReturn574Computers() {
 		List<Computer> computers = computerRepository.findAll();
 		assertEquals(computers.size(), 574);
+	}
+
+	//UPDATE 
+
+	@Test
+	@Transactional
+	public void updateComputerShouldReturnModifiedComputer() {
+		computer.setId(574);
+		computer.setName("iPhone 4S_modified");
+		computerRepository.save(computer);
+		assertEquals(computer.getName(), computerRepository.findOne(574).get().getName());
+		computer.setName("iPhone 4S");
+		computerRepository.save(computer);
+	}
+
+	//DELETE 
+	@Test
+	@Transactional
+	public void deleteComputerShouldReturnFalse() {
+		long idGenerated = computerRepository.save(computer).get().getId();
+		computerRepository.delete(idGenerated);
+		assertFalse(computerRepository.findOne(idGenerated).isPresent());
+	}
+	
+	@Test(expected=DaoException.class)
+	@Transactional
+	public void deleteComputerShouldThrowExceptionBecauseIdisInvalid() {
+		computerRepository.delete(-1L);
 	}
 
 
