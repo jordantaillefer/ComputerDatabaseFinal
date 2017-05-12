@@ -1,11 +1,5 @@
 package com.main.excilys.controller;
 
-import com.main.excilys.model.dto.ComputerDto;
-import com.main.excilys.presentation.Page;
-import com.main.excilys.service.CompanyService;
-import com.main.excilys.service.ComputerService;
-import com.main.excilys.util.ComputerDbException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.main.excilys.model.dto.ComputerDto;
+import com.main.excilys.presentation.Page;
+import com.main.excilys.service.CompanyService;
+import com.main.excilys.service.ComputerService;
+import com.main.excilys.util.ComputerDbException;
 
 @Controller
 public class AddComputerController {
@@ -51,8 +51,6 @@ public class AddComputerController {
     try {
       computerService.createComputer(newComputerDto);
       // long idCreate = computerService.createComputer(newComputerDto);
-      // Toaster toast = Toaster.INSTANCE.getToast("Computer n°" + idCreate + " created !",
-      // Toaster.SUCCESS, 3000);
       // req.setAttribute("toast", toast);
       Page.incrementNbObject();
     } catch (ComputerDbException e) {

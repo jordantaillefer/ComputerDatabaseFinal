@@ -1,11 +1,9 @@
 package com.main.excilys.rest;
 
-import com.main.excilys.model.dto.ComputerDto;
-import com.main.excilys.service.ComputerService;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -22,45 +20,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.main.excilys.model.dto.ComputerDto;
+import com.main.excilys.service.ComputerService;
+
 @RestController
 public class ComputerRestController {
-  @Autowired
-  private ComputerService computerService;
+    @Autowired
+    private ComputerService computerService;
 
-  @GetMapping("/computers")
-  public @ResponseBody List<ComputerDto> getAllComputer(@RequestParam("page") String page) {
-    Map<String, String> options = new HashMap<>();
+    @GetMapping("/computers")
+    public @ResponseBody List<ComputerDto> getAllComputer(@RequestParam("page") String page) {
+        Map<String, String> options = new HashMap<>();
 
-    options.put("column", "");
-    options.put("search", "");
-    return computerService.getComputerInRange(Integer.valueOf(page), 10, options);
-  }
+        options.put("column", "");
+        options.put("search", "");
+        return computerService.getComputerInRange(Integer.valueOf(page), 10, options);
+    }
 
-  @GetMapping("/computers/{id}")
-  public @ResponseBody ComputerDto getComputerById(@PathVariable(value = "id") Long id) {
-    return computerService.getComputerById(id);
-  }
+    @GetMapping("/computers/{id}")
+    @Produces({MediaType.APPLICATION_JSON })
+    public ResponseEntity<ComputerDto> getComputerById(@PathVariable(value = "id") Long id) {
+        Optional<ComputerDto> computerDto = computerService.getComputerById(id);
+        if (computerDto.isPresent()) {
+            return new ResponseEntity<>(computerDto.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
-  @PostMapping("/computers")
-  @Produces({ MediaType.APPLICATION_JSON })
-  public ResponseEntity<ComputerDto> addComputer(@RequestBody ComputerDto computerDto) {
-    computerService.createComputer(computerDto);
-    return new ResponseEntity<>(computerDto, HttpStatus.OK);
-  }
+    }
 
-  @PutMapping("/computers")
-  @Produces({ MediaType.APPLICATION_JSON })
-  public ResponseEntity<ComputerDto> updateComputer(@RequestBody ComputerDto computerDto) {
-    computerService.updateComputer(computerDto);
-    return new ResponseEntity<>(computerDto, HttpStatus.OK);
-  }
+    @PostMapping("/computers")
+    @Produces({MediaType.APPLICATION_JSON })
+    public ResponseEntity<ComputerDto> addComputer(@RequestBody ComputerDto computerDto) {
+        computerService.createComputer(computerDto);
+        return new ResponseEntity<>(computerDto, HttpStatus.OK);
+    }
 
-  @GetMapping("/computers/count")
-  public @ResponseBody long getNbComputer() {
-    Map<String, String> options = new HashMap<>();
-    options.put("column", "");
-    options.put("search", "");
-    return computerService.getNbComputer(options);
-  }
+    @PutMapping("/computers")
+    @Produces({MediaType.APPLICATION_JSON })
+    public ResponseEntity<ComputerDto> updateComputer(@RequestBody ComputerDto computerDto) {
+        computerService.updateComputer(computerDto);
+        return new ResponseEntity<>(computerDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/computers/count")
+    public @ResponseBody long getNbComputer() {
+        Map<String, String> options = new HashMap<>();
+        options.put("column", "");
+        options.put("search", "");
+        return computerService.getNbComputer(options);
+    }
 
 }

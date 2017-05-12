@@ -9,10 +9,6 @@ public class CompanyRest {
     this.name = name;
   }
 
-  public CompanyRest() {
-    // TODO Auto-generated constructor stub
-  }
-
   public long getId() {
     return id;
   }
