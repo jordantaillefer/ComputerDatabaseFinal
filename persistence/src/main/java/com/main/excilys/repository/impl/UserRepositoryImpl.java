@@ -22,6 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager       session;
 
+    // TODO do the update case
     @Override
     public Optional<User> save(User user) {
         if (user == null) {

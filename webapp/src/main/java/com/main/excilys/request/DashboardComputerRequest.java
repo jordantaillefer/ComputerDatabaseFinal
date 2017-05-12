@@ -5,7 +5,7 @@ import org.springframework.format.annotation.NumberFormat.Style;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DashboardRequest {
+public class DashboardComputerRequest {
   private String search;
   private String column;
 

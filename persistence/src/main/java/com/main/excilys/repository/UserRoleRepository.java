@@ -6,6 +6,11 @@ import com.main.excilys.model.UserRole;
 
 public interface UserRoleRepository {
 
+    /**
+     * save or update the given userRole in the database.
+     * @param userRole the userRole to save/update.
+     * @return the userRoel saved/updated
+     */
     Optional<UserRole> save(UserRole userRole);
 
 }

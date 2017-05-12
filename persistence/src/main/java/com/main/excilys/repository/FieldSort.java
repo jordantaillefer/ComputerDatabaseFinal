@@ -22,6 +22,11 @@ public enum FieldSort {
         return text;
     }
 
+    /**
+     * Return the FieldSort corresponding to the given String. If no one match, it return NAME.
+     * @param sort the String to sort by.
+     * @return The corresponding FieldSort
+     */
     public static FieldSort getFieldSort(String sort) {
         if (sort != null) {
             switch (sort) {

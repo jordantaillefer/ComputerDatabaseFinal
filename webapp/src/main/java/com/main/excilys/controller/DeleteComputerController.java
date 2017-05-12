@@ -1,7 +1,7 @@
 package com.main.excilys.controller;
 
 import com.main.excilys.presentation.Page;
-import com.main.excilys.request.DashboardRequest;
+import com.main.excilys.request.DashboardComputerRequest;
 import com.main.excilys.service.ComputerService;
 
 import java.util.Arrays;
@@ -28,7 +28,7 @@ public class DeleteComputerController {
    * @return the view
    */
   @PostMapping(value = "/deleteComputer")
-  public ModelAndView doPost(@ModelAttribute DashboardRequest dashboardRequest,
+  public ModelAndView doPost(@ModelAttribute DashboardComputerRequest dashboardRequest,
       @RequestParam("selection") String selection) {
     this.doDelete(selection);
 
