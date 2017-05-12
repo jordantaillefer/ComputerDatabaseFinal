@@ -22,6 +22,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     private static final String HQL_COUNT_COMPUTER_SEARCH_BY_COMPUTER         = "Select COUNT(c) From Computer as c where c.name like :search";
     private static final String HQL_COUNT_COMPUTER_SEARCH_BY_COMPANY          = "Select COUNT(c) From Computer as c left join c.company as company where company.name like :search";
     private static final String HQL_SELECT_ALL_COMPUTER                       = "From Computer";
+    private static final String HQL_UPDATE_COMPUTER                           = "Update Computer c set c.name = :name, c.introduced = :introduced, c.discontinued = :discontinued, c.company = :company WHERE c.id = :id";
     private static final String HQL_SELECT_COMPUTER_SEARCH_ORDER              = "Select c From Computer as c left join c.company as company where c.name like :search order by %s asc";
     private static final String HQL_SELECT_COMPUTER_SEARCH_COMPANY_NAME_ORDER = "Select c From Computer as c left join c.company as company where company.name like :search order by %s asc";
     private static final String HQL_DELETE_COMPUTER_BY_COMPANY                = "delete from Computer c where c.company = :company";
@@ -59,10 +60,12 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         TypedQuery<Computer> query = this.session.createQuery(HQL_SELECT_ONE_COMPUTER,
                 Computer.class);
         query.setParameter("id", idToSelect);
-        Computer computer = query.getResultList().get(0);
-        System.out.println("Id : " + idToSelect);
-        // Computer computer = this.session.find(Computer.class, idToSelect);
-        System.out.println(computer);
+        Computer computer = null;
+        try {
+            computer = query.getResultList().get(0);
+        } catch (IndexOutOfBoundsException e) {
+
+        }
         return Optional.ofNullable(computer);
     }
 
@@ -83,6 +86,25 @@ public class ComputerRepositoryImpl implements ComputerRepository {
                 || pattern.matcher(computer.getName()).find()) {
             throw new DaoException("The computer name must be set and not contain invalid chars");
         }
+        if (computer.getId() != 0) {
+            return update(computer);
+        } else {
+            return create(computer);
+        }
+    }
+
+    private Optional<Computer> update(Computer computer) {
+        this.session.createQuery(HQL_UPDATE_COMPUTER).setParameter("name", computer.getName())
+                .setParameter("introduced", computer.getIntroduced())
+                .setParameter("discontinued", computer.getDiscontinued())
+                .setParameter("company", computer.getCompany()).setParameter("id", computer.getId())
+                .executeUpdate();
+        computer = this.session.contains(computer) ? computer : this.session.merge(computer);
+        this.session.refresh(computer);
+        return Optional.ofNullable(computer);
+    }
+
+    private Optional<Computer> create(Computer computer) {
         this.session.persist(computer);
         this.session.flush();
         this.session.refresh(computer);
@@ -91,8 +113,12 @@ public class ComputerRepositoryImpl implements ComputerRepository {
 
     @Override
     public void delete(long idToDelete) {
-        Computer computer = this.session.find(Computer.class, idToDelete);
-        this.session.remove(computer);
+        try {
+            Computer computer = this.session.find(Computer.class, idToDelete);
+            this.session.remove(computer);
+        } catch (IllegalArgumentException e) {
+            throw new DaoException(e);
+        }
     }
 
     @Override
