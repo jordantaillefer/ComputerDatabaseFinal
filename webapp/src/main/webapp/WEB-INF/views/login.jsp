@@ -5,11 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<link href="<c:url value="/resources/css/material.css" />"
-	rel="stylesheet">
 <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
@@ -30,17 +28,17 @@
 				<c:if test="${param.logout}">
 					<div class="alert alert-success">You have been logged out.</div>
 				</c:if>
-				<div class="group">
-					<input type="text" id="username" name="username" required>
-					<span class="highlight"></span> <span class="bar"></span> <label><spring:message code="login.username"/></label>
+				<div class="input-field">
+					<input type="text" class="validate" name="username" required>
+					<label for="username"><spring:message code="login.username"/></label>
 				</div>
-				<div class="group">
-					<input type="password" id="password" name="password" required>
-					<span class="highlight"></span> <span class="bar"></span> <label><spring:message code="login.password"/></label>
+				<div class="input-field">
+					<input type="password" class="validate" id="password" name="password" required>
+					<label for="password"><spring:message code="login.password"/></label>
 				</div>
 
 				<div class="form-actions">
-					<button id="submit" type="submit" class="button buttonBlue">
+					<button id="submit" type="submit" class="waves-effect waves-light btn">
 						<spring:message code="login.signin"/>
 						<div class="ripples buttonRipples">
 							<span class="ripplesCircle"></span>
@@ -50,5 +48,8 @@
 			</form>
 		</div>
 	</div>
+	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
+	<script src="<c:url value="/resources/js/materialize.min.js" />"></script>
+	<script src="<c:url value="/resources/js/init.js" />"></script>
 </body>
 </html>
