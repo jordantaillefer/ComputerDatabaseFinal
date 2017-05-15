@@ -1,5 +1,7 @@
 package com.main.excilys.repository.impl;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -20,17 +22,21 @@ import com.main.excilys.repository.FieldSort;
 
 @Repository
 public class ComputerRepositoryImpl implements ComputerRepository {
-    private static final String HQL_COUNT_COMPUTER_SEARCH_BY_COMPUTER         = "Select COUNT(c) From Computer as c where c.name like :search";
-    private static final String HQL_COUNT_COMPUTER_SEARCH_BY_COMPANY          = "Select COUNT(c) From Computer as c left join c.company as company where company.name like :search";
-    private static final String HQL_SELECT_ALL_COMPUTER                       = "From Computer";
-    private static final String HQL_UPDATE_COMPUTER                           = "Update Computer c set c.name = :name, c.introduced = :introduced, c.discontinued = :discontinued, c.company = :company WHERE c.id = :id";
-    private static final String HQL_SELECT_COMPUTER_SEARCH_ORDER              = "Select c From Computer as c left join c.company as company where c.name like :search order by %s asc";
-    private static final String HQL_SELECT_COMPUTER_SEARCH_COMPANY_NAME_ORDER = "Select c From Computer as c left join c.company as company where company.name like :search order by %s asc";
-    private static final String HQL_DELETE_COMPUTER_BY_COMPANY                = "delete from Computer c where c.company = :company";
-    private static final String HQL_SELECT_ONE_COMPUTER                       = "Select c From Computer as c where c.id like :id";
+    private static final String    HQL_COUNT_COMPUTER_SEARCH_BY_COMPUTER         = "Select COUNT(c) From Computer as c where c.name like :search";
+    private static final String    HQL_COUNT_COMPUTER_SEARCH_BY_COMPANY          = "Select COUNT(c) From Computer as c left join c.company as company where company.name like :search";
+    private static final String    HQL_SELECT_ALL_COMPUTER                       = "From Computer";
+    private static final String    HQL_UPDATE_COMPUTER                           = "Update Computer c set c.name = :name, c.introduced = :introduced, c.discontinued = :discontinued, c.company = :company WHERE c.id = :id";
+    private static final String    HQL_SELECT_COMPUTER_SEARCH_ORDER              = "Select c From Computer as c left join c.company as company where c.name like :search order by %s asc";
+    private static final String    HQL_SELECT_COMPUTER_SEARCH_COMPANY_NAME_ORDER = "Select c From Computer as c left join c.company as company where company.name like :search order by %s asc";
+    private static final String    HQL_DELETE_COMPUTER_BY_COMPANY                = "delete from Computer c where c.company = :company";
+    private static final String    HQL_SELECT_ONE_COMPUTER                       = "Select c From Computer as c where c.id like :id";
+    private static final LocalDate TIMESTAMP_MIN                                 = LocalDate
+            .of(1970, Month.JANUARY, 0);
+    private static final LocalDate TIMESTAMP_MAX                                 = LocalDate
+            .of(2038, Month.JANUARY, 18);
 
     @PersistenceContext
-    private EntityManager       session;
+    private EntityManager          session;
 
     @Override
     public List<Computer> findByNameStartingWith(String search, int numPage, int nbObjectToGet,
@@ -78,6 +84,17 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         if (computer.getIntroduced() != null && computer.getDiscontinued() != null
                 && computer.getIntroduced().isAfter(computer.getDiscontinued())) {
             throw new DaoException("Introduced date can't be after the discontinued");
+        }
+        if (computer.getIntroduced() != null && (computer.getIntroduced().isBefore(TIMESTAMP_MIN)
+                || computer.getIntroduced().isAfter(TIMESTAMP_MAX))) {
+            throw new DaoException("Introduced date must be between " + TIMESTAMP_MIN.toString()
+                    + " and " + TIMESTAMP_MAX.toString());
+        }
+        if (computer.getDiscontinued() != null
+                && (computer.getDiscontinued().isBefore(TIMESTAMP_MIN)
+                        || computer.getDiscontinued().isAfter(TIMESTAMP_MAX))) {
+            throw new DaoException("Discontinued date must be between " + TIMESTAMP_MIN.toString()
+                    + " and " + TIMESTAMP_MAX.toString());
         }
         if (computer.getCompany() != null && computer.getCompany().getId() < 0) {
             throw new DaoException("The company Id must be an existent one.");
