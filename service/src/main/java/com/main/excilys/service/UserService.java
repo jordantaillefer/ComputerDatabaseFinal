@@ -38,8 +38,7 @@ public class UserService {
         List<UserDto> userDtos = new ArrayList<>();
 
         for (User user : users) {
-            List<UserRole> roles = userRoleRepository.findRolesForOneUser(user.getUsername());
-            userDtos.add(UserToDtoMapper.toUserDto(user, roles));
+            userDtos.add(UserToDtoMapper.toUserDto(user));
         }
         return userDtos;
     }
