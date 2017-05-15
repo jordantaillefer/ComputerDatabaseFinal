@@ -27,7 +27,10 @@ $(document).ready(function(){
 	});
 
 	$('#introduced').change(function(){
-		if($('#introduced').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") || $('#introduced').val()=="") {
+		if( ( $('#introduced').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") && 
+				new Date($('#introduced').val()) < new Date(2038, 12, 01) &&
+				new Date($('#introduced').val()) > new Date(1970, 01, 01) ) ||
+				$('#introduced').val()=="" ) {
 			$('#introduced').removeClass('invalid');
 			$('#introduced').addClass('valid');
 			diisok = true;
@@ -41,7 +44,10 @@ $(document).ready(function(){
 	});
 
 	$('#discontinued').change(function(){
-		if($('#discontinued').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") || $('#discontinued').val()=="") {
+		if(( $('#discontinued').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") && 
+				new Date($('#discontinued').val()) < new Date(2038, 12, 01) &&
+				new Date($('#discontinued').val()) > new Date(1970, 01, 01) ) ||
+				$('#discontinued').val()=="") {
 			$('#discontinued').removeClass('invalid');
 			$('#discontinued').addClass('valid');
 			ddisok = true;
@@ -67,10 +73,10 @@ $(document).ready(function(){
 			allisright();
 		}
 	});
-	
+
 });
 
-// VALIDATION OF ALL INPUTS TO ENABLE SUBMIT BUTTON
+//VALIDATION OF ALL INPUTS TO ENABLE SUBMIT BUTTON
 
 var allisright = function(){
 
