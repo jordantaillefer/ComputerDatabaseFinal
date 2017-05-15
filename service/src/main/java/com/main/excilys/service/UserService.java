@@ -18,20 +18,24 @@ import com.main.excilys.repository.UserRoleRepository;
 @Repository
 public class UserService {
 
-  @Autowired
-  UserRepository userRepository;
+    @Autowired
+    UserRepository     userRepository;
 
-  @Autowired
-  UserRoleRepository userRoleRepository;
+    @Autowired
+    UserRoleRepository userRoleRepository;
 
-  @Transactional
-  public void addUser(UserDto userDto) {
-    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-    userRepository.save(UserToDtoMapper.toUser(userDto));
-    userRoleRepository.save(new UserRole(userDto.getUsername(), "USER"));
-
-  }
+    @Transactional
+    public void addUser(UserDto userDto) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        UserRole userRole = new UserRole(userDto.getUsername(), "ROLE_USER");
+        List<UserRole> userRoles = new ArrayList<>();
+        userRoles.add(userRole);
+        User user = UserToDtoMapper.toUser(userDto);
+        user.setUserRoles(userRoles);
+        userRepository.save(user);
+        userRoleRepository.save(userRole);
+    }
 
     public List<UserDto> findAll() { // TODO consider using lambdas
         List<User> users = userRepository.findAll();
@@ -41,6 +45,10 @@ public class UserService {
             userDtos.add(UserToDtoMapper.toUserDto(user));
         }
         return userDtos;
+    }
+
+    public int countUsersSearchByName(String search) {
+        return userRepository.countSearchByName(search);
     }
 
 }

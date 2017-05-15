@@ -1,4 +1,4 @@
-package com.main.excilys.controller;
+package com.main.excilys.controller.user;
 
 import java.util.List;
 
@@ -20,6 +20,7 @@ public class DashboardUserController {
     public ModelAndView displayAllUsers() {
         ModelAndView model = new ModelAndView();
         List<UserDto> users = userService.findAll();
+        model.addObject("nbUserDto", userService.countUsersSearchByName(null));
         model.addObject("users", users);
         model.setViewName("dashboardUser");
         return model;

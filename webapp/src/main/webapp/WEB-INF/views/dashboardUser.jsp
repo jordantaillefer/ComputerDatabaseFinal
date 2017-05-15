@@ -48,7 +48,6 @@
 			<h1 id="homeTitle">${ nbUserDto  }
 				<spring:message code="dashboard.user_found" />
 			</h1>
-
 		</div>
 
 		<div class="container">

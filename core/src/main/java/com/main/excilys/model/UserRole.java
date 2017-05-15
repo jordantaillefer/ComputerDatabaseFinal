@@ -31,10 +31,11 @@ public class UserRole implements Serializable {
     private int               userRoleId;
 
     @Pattern(regexp = "^[a-zA-Z0-9 ._-]+$", message = "The name need at least one char or number")
+    @Column(name = "username")
     private String            name;
     private String            role;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username", insertable = false, updatable = false)
     private User              user;
 
     public UserRole(String username, String role) {

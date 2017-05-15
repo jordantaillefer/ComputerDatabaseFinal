@@ -1,4 +1,4 @@
-package com.main.excilys.controller;
+package com.main.excilys.controller.computer;
 
 import com.main.excilys.presentation.Page;
 import com.main.excilys.request.DashboardComputerRequest;

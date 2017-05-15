@@ -1,7 +1,4 @@
-package com.main.excilys.controller;
-
-import com.main.excilys.model.dto.UserDto;
-import com.main.excilys.service.UserService;
+package com.main.excilys.controller.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.main.excilys.model.dto.UserDto;
+import com.main.excilys.service.UserService;
 
 @Controller
 public class UserController {
@@ -40,7 +40,7 @@ public class UserController {
 
     userService.addUser(userDto);
     ModelAndView model = new ModelAndView();
-    model.setViewName("redirect:/dashboard");
+        model.setViewName("redirect:/dashboardUser");
 
     return model;
   }
