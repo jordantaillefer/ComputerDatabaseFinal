@@ -23,12 +23,12 @@
 		  <header class="layout_header">
 		    <div class="mdl-layout__header-row">
 		      <span class="mdl-layout-title"> <a href="dashboard" >Computer Database</a></span>
-		      <form id="search-form" action="#">
+		      <form id="search-form" action="#"  method="GET">
 		      		<label class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">search</i>
 					</label>
 				   <div class="mdl-textfield mdl-js-textfield">
-				    <input class="mdl-textfield__input" type="text" id="sample1">
+				    <input class="mdl-textfield__input" type="text" name="search" id="sample1">
 				    <label class="mdl-textfield__label" for="sample1">Search</label>
 				  </div>
 	

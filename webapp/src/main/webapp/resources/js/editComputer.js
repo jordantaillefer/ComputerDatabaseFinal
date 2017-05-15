@@ -1,6 +1,6 @@
 ///On load
 
-var nameisok = false;
+var nameisok = true;
 var diisok = true;
 var ddisok = true;
 var companyisok = true;
@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 
 	// INIT OF BUTTON
-	$('#submit').prop('disabled', true);
+	$('#submit').prop('disabled', false);
 
 	// ONCHANGE VALIDATION FOR EACH INPUT
 	$('#name').change(function(){
