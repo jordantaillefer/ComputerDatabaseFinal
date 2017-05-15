@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.model.User;
 import com.main.excilys.repository.UserRepository;
@@ -20,9 +21,10 @@ public class UserRepositoryImpl implements UserRepository {
     private static final String HQL_SELECT_ONE                = "Select u From User as u where u.username like :username";
 
     @PersistenceContext
-    private EntityManager       session;
+    private EntityManager session;
 
-    // TODO do the update case
+    //TODO do the update case
+    @Transactional
     @Override
     public Optional<User> save(User user) {
         if (user == null) {

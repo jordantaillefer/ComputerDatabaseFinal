@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.mapper.ComputerToDtoMapper;
 import com.main.excilys.model.Computer;
@@ -42,6 +43,7 @@ public class ComputerService {
      * @param newComputer the computer to create
      * @return the generated id of the computer
      */
+    @Transactional
     public long createComputer(ComputerDto newComputer) {
         Optional<Computer> computer = computerRepository
                 .save(ComputerToDtoMapper.toComputer(newComputer));

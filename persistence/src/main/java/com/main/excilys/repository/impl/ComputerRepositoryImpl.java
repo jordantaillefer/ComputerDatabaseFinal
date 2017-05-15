@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.model.Company;
 import com.main.excilys.model.Computer;
@@ -39,18 +40,18 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         TypedQuery<Computer> query = this.session.createQuery(hqlQuery, Computer.class)
                 .setMaxResults(nbObjectToGet).setFirstResult(numPage * nbObjectToGet);
         query.setParameter("search", searchPattern);
-        return query.getResultList();
+        List<Computer> computers = query.getResultList();
+        return computers;
     }
 
     @Override
     public List<Computer> findByCompanyNameStartingWith(String search, int numPage,
             int nbObjectToGet, FieldSort sort) {
-        String searchPattern = search != null ? search + "%" : "%";
         String hqlQuery = String.format(HQL_SELECT_COMPUTER_SEARCH_COMPANY_NAME_ORDER,
                 "c." + sort.toString());
         TypedQuery<Computer> query = this.session.createQuery(hqlQuery, Computer.class)
                 .setMaxResults(nbObjectToGet).setFirstResult(numPage * nbObjectToGet);
-        query.setParameter("search", searchPattern);
+        query.setParameter("search", search);
         return query.getResultList();
     }
 
@@ -69,6 +70,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     }
 
     @Override
+    @Transactional
     public Optional<Computer> save(Computer computer) {
         if (computer == null) {
             throw new IllegalArgumentException("can't save a null object");
@@ -110,6 +112,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         return Optional.ofNullable(computer);
     }
 
+    @Transactional
     @Override
     public void delete(long idToDelete) {
         try {
@@ -146,6 +149,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         return query.getResultList().get(0).intValue();
     }
 
+    @Transactional
     @Override
     public void deleteComputerByCompany(Company company) {
         this.session.createQuery(HQL_DELETE_COMPUTER_BY_COMPANY).setParameter("company", company)

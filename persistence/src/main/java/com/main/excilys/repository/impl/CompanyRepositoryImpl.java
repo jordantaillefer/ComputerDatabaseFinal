@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.model.Company;
 import com.main.excilys.repository.CompanyRepository;
@@ -38,6 +39,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         return 0;
     }
 
+    @Transactional
     @Override
     public void delete(long idToDelete) {
         try {
