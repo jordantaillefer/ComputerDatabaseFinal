@@ -116,12 +116,10 @@ body:before {
     float: right;
     display : none;
 	padding-top: 12px;
-	
 }
 .rowComputer:hover:not(.delete-checkbox-panel) .delete-panel {
     width: 108px;
 }
-
 .delete-checkbox-panel.selected {
     transition : width .3s ease-out;
 	 width: 32px;
