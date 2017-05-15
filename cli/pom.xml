@@ -78,9 +78,5 @@
 			<artifactId>javax.ws.rs-api</artifactId> 
 		</dependency>
 
-
-
-
-
 	</dependencies>
 </project>
