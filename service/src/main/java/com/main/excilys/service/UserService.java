@@ -2,6 +2,7 @@ package com.main.excilys.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,14 +38,22 @@ public class UserService {
         userRoleRepository.save(userRole);
     }
 
-    public List<UserDto> findAll() { // TODO consider using lambdas
+    public List<UserDto> findAll() {
         List<User> users = userRepository.findAll();
         List<UserDto> userDtos = new ArrayList<>();
-
-        for (User user : users) {
-            userDtos.add(UserToDtoMapper.toUserDto(user));
-        }
+        users.forEach(user -> userDtos.add(UserToDtoMapper.toUserDto(user)));
         return userDtos;
+    }
+
+    public void promoteUser(String username) {
+        List<UserRole> userRoles = userRoleRepository.findRolesForOneUser(username);
+        List<UserRole> userRoleAdmin = userRoles.stream()
+                .filter(userRole -> "ROLE_ADMIN".equals(userRole.getRole()))
+                .collect(Collectors.toList());
+        if (userRoleAdmin.size() == 0) {
+            UserRole userRole = new UserRole(username, "ROLE_ADMIN");
+            userRoleRepository.save(userRole);
+        }
     }
 
     public int countUsersSearchByName(String search) {
