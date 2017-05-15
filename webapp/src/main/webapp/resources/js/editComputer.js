@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$('#submit').prop('disabled', false);
 
 	// ONCHANGE VALIDATION FOR EACH INPUT
-	$('#name').change(function(){
+	$('#name').keydown(function(){
 		if(!$('#name').val().match("^[a-zA-Z0-9 -._]+$") || $('#name').val()=="") {
 			$('#name').removeClass('valid');
 			$('#name').addClass('invalid');

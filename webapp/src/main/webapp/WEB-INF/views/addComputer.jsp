@@ -8,8 +8,9 @@
 <link href="<c:url value="/resources/css/addComputer.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/materialize.min.css" />"
-	rel="stylesheet">
+<link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
+<link href="/webapp/resources/css/material.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
@@ -52,6 +53,11 @@
 					</button>
 				</div>
 			</form>
+		</div>
+		<div class="fab-btn">
+			<a href="/webapp/dashboard"
+		class="btn-floating btn-large waves-effect waves-light "><i
+		class="material-icons">home</i></a>
 		</div>
 	</div>
 	
