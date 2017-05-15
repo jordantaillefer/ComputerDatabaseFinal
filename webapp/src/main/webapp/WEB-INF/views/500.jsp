@@ -6,7 +6,6 @@
 	<!-- Bootstrap -->
 	<link href="../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="../../resources/css/font-awesome.min.css" rel="stylesheet" media="screen">
-	<link href="../../resources/css/main.css" rel="stylesheet" media="screen">
 </head>
 <body>
 	<header class="navbar navbar-inverse navbar-fixed-top">
@@ -18,7 +17,7 @@
 	<section id="main">
 		<div class="container">
 			<div class="alert alert-danger">
-				Error 403: Access denied!
+				Error 500: An error has occured!
 				<br/>
 				<!-- stacktrace -->
 			</div>

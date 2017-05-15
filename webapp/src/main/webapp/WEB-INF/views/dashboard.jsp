@@ -16,7 +16,6 @@
 <link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-
 </head>
 <body id="dashboard">
 	<div class="panel-header">
