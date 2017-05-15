@@ -11,158 +11,96 @@
 <%@ taglib prefix="page" uri="/WEB-INF/pagination.tld"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet">
-<link href="<c:url value="/resources/css/font-awesome.min.css" />"
-	rel="stylesheet">
-<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/toaster.css" />"
-	rel="stylesheet">
-<link href="<c:url value="/resources/css/material.css" />"
-	rel="stylesheet">
-	
+<link href="<c:url value="/resources/css/dashboardUser.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/toaster.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 </head>
 <body id="dashboard">
-	<header class="navbar navbar-inverse navbar-fixed-top">
-		<%@ include file="core/header.jsp"%>
-
-	</header>
-
-	<section id="main">
-		<div class="container">
-			<h1 id="homeTitle"> Do we display number of Users ?
+<!-- Always shows a header, even in smaller screens. -->
+	<div class="panel-header">
+		<div class="mdl-layout mdl-js-layout">
+		  <header class="layout_header">
+		    <div class="mdl-layout__header-row">
+		      <span class="mdl-layout-title"> <a href="dashboard" >Computer Database</a></span>
+		    </div>
+		  </header>
+		</div>
+	</div>
+<section id="main">
+	<div class="sidebar">
+		<div class="panel-icons">
+		<a href="dashboard?mylocale=en"><img alt="English"  class="picto-flag" src="<c:url value="/resources/img/flag-en.png"/>"></a>
+		<a href="dashboard?mylocale=fr"><img alt="French"  class="picto-flag" src="<c:url value="/resources/img/flag-fr.png"/>"></a>
+		</div>
+		<div class="menu">
+			<ul class="dashboard-menu">
+			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span>Computer</span></li>
+			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span>Users</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="card mdl-shadow--2dp">
+		<div class="mdl-card__supporting-text">
+			<h1 id="homeTitle">${ nbUserDto  }
+				<spring:message code="dashboard.user_found" />
 			</h1>
 
-			<div id="actions" class="form-horizontal">
-				<div class="pull-left form-inline">
-					<form id="searchForm" action="dashboardUser" method="GET"
-						class="form-inline">
-						<input type="hidden" name="page" value="${ 0 }" /><input
-							type="search" id="searchbox" name="search" class="form-control"
-							placeholder="<spring:message code="dashboard.actual_options_search"/>" />
-						<input type="submit" id="searchsubmit"
-							value="<spring:message code="dashboard.actual_reset"/>"
-							class="btn btn-primary" />
-					</form>
-					<%-- <a class="btn btn-danger btn-md"
-						href="dashboard?page=${ 0 }&search="> <spring:message
-							code="dashboard.actual_options" /></a>
-					<c:if test="${fn:length(model.options) > 0 }">
-						<p class="options">
-							<span><spring:message code="dashboard.actual_search" /></span>
-							<c:forEach items="${ model.options }" var="option">
-								<span> ${option.key } value : ${option.value }</span>
-							</c:forEach>
-						</p>
-					</c:if> --%>
-				</div>
-				<%-- <div class="pull-right">
-					<a class="btn btn-success" id="addComputer" href="addComputer"><spring:message
-							code="dashboard.add_computer" /></a> <a class="btn btn-default"
-						id="editComputer" href="#" onclick="$.fn.toggleEditMode();"><spring:message
-							code="dashboard.edit" /></a>
-				</div> --%>
-			</div>
 		</div>
 
-		<%-- <form id="deleteForm" action="deleteComputer" method="POST">
-			<input type="hidden" name="${_csrf.parameterName}" id="_csrf"
-				value="${_csrf.token}" /> <input type="hidden" name="nbObject"
-				value="${ model.pageComputerDto.nbObjectPerPage }" /> <input
-				type="hidden" name="page" value="${ model.pageComputerDto.page }" />
-			<input type="hidden" name="column" value="${ model.options.column }" />
-			<input type="hidden" name="search" value="${ model.options.search }" />
-			<input type="hidden" name="selection" value="">
-		</form> --%>
-
-		<div class="container" style="margin-top: 10px;">
-			<table class="table table-striped table-bordered" id="tableDashboard">
+		<div class="container">
+			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="tableDashboard">
 				<thead>
 					<tr>
-						<th>Username (no multilingual, no sort)</th>
-						<th>Role</th>
-						<th>Enabled</th>
+						<th class="mdl-data-table__cell--non-numeric">Username (no multilingual, no sort)</th>
+						<th class="mdl-data-table__cell--non-numeric">Role</th>
+						<th class="mdl-data-table__cell--non-numeric">Enabled</th>
 					</tr>
 				</thead>
 				<tbody id="results">
 					<c:forEach items="${ users}" var="user">
 						<tr>
-							<td>${user.username }</td>
-							<td>${user.role }</td>
-							<td>${user.enabled }</td>
+							<td class="mdl-data-table__cell--non-numeric">${user.username }</td>
+							<td class="mdl-data-table__cell--non-numeric">${user.role }</td>
+							<td class="mdl-data-table__cell--non-numeric">${user.enabled }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
+	</div>
+	</div>
 	</section>
-	<span id="top-link-block" class="hidden fab-goto-top"> <span
-		class="fab-content"
-		onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
-			<i class="glyphicon glyphicon-chevron-up"></i>
-	</span>
-	</span>
-	<span id="bottom-link-block" class="hidden fab-goto-bottom"> <span
-		class="fab-content"
-		onclick="$('html,body').animate({scrollTop: $(document).height()},'slow');return false;">
-			<i class="glyphicon glyphicon-chevron-down"></i>
-	</span>
 	
-	</span>
+	<div class="dashboard-fab-go-to-top">
+		<button  class="btn-floating btn-large waves-effect waves-light"
+		onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+			<i class="material-icons">keyboard_arrow_up</i>
+		</button>
+	</div>
+	<div class="dashboard-fab-go-to-bottom">
+		<button  class="btn-floating btn-large waves-effect waves-light"
+		onclick="$('html,body').animate({scrollTop: $(document).height()},'slow');return false;">
+			<i class="material-icons">keyboard_arrow_down</i>
+		</button>
+	</div>
 	<div class="dashboard-fab-add">
-		<button id="button-add-user" class="btn-floating btn-large waves-effect waves-light red">
+		<button id="button-add-user" class="btn-floating btn-large waves-effect waves-light">
 		  <i class="material-icons">add</i>
 		</button>
 	</div>
 
 	<footer class="navbar-fixed-bottom">
-		<%@ include file="core/footer.jsp"%>
-		<%-- <div class="container text-center">
-			<ul class="pagination">
-				<page:link page="0" type="first" label="&laquo;"
-					column="${model.options.column }"
-					search="${ model.options.search }"
-					nbObject="${ model.pageComputerDto.nbObjectPerPage }" />
-				<page:link page="${ model.pageComputerDto.page-1 }" type="previous"
-					label="&lt;" column="${model.options.column }"
-					search="${ model.options.search }"
-					nbObject="${ model.pageComputerDto.nbObjectPerPage }" />
-				<page:pagination page="${ model.pageComputerDto.page }"
-					maxPage="${ model.pageComputerDto.maxPage }"
-					column="${model.options.column }"
-					search="${ model.options.search }"
-					nbObject="${ model.pageComputerDto.nbObjectPerPage }" />
-				<page:link page="${ model.pageComputerDto.page+1 }" type="next"
-					label="&gt;" column="${model.options.column }"
-					search="${ model.options.search }"
-					nbObject="${ model.pageComputerDto.nbObjectPerPage }" />
-				<page:link page="${ model.pageComputerDto.maxPage }" type="last"
-					label="&raquo;" column="${model.options.column }"
-					search="${ model.options.search }"
-					nbObject="${ model.pageComputerDto.nbObjectPerPage }" />
-			</ul>
-
-			<div class="pull-right" role="group">
-				<ul class="pagination">
-					<c:forEach items="${model.nbObjectAvailablePerPage}" var="nbObject">
-						<li
-							<c:if test="${ nbObject  == model.pageComputerDto.nbObjectPerPage}">
-              <c:out value='class=active'/>
-            </c:if>><a
-							id="nbObject${ nbObject }" class="nbObject"
-							href="dashboard?page=${0 }&nbObject=${ nbObject }&column=${ model.options.column }&search=${model.options.search}">${ nbObject }</a></li>
-					</c:forEach>
-				</ul>
-			</div>
-		</div> --%>
-	</footer>
+		<div class="footer-panel">
+		</div>
+	</footer> 
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 	<script src="<c:url value="/resources/js/materialize.min.js" />"></script>
 	<script src="<c:url value="/resources/js/dashboardUser.js" />"></script>
+	<script src="<c:url value="/resources/js/menu.js" />"></script>
 	<script src="<c:url value="/resources/js/main.js" />"></script>
 </body>
 </html>

@@ -11,16 +11,14 @@
 <%@ taglib prefix="page" uri="/WEB-INF/pagination.tld"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/toaster.css" />"
-	rel="stylesheet">
+<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/toaster.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 </head>
 <body id="dashboard">
-<!-- Always shows a header, even in smaller screens. -->
 	<div class="panel-header">
 		<div class="mdl-layout mdl-js-layout">
 		  <header class="layout_header">
@@ -64,40 +62,6 @@
 			<h1 id="homeTitle">${ nbComputerDto }
 				<spring:message code="dashboard.computer_found" />
 			</h1>
-
-			<%-- <div id="actions" class="form-horizontal">
-				<div class="pull-left form-inline">
-					<form id="searchForm" action="dashboard" method="GET"
-						class="form-inline">
-						<input type="hidden" name="page" value="${ 0 }" /><input
-							type="hidden" name="nbObject"
-							value="${ model.pageComputerDto.nbObjectPerPage }" /> <input
-							type="hidden" name="column" value="${ model.options.column }" /><input
-							type="search" id="searchbox" name="search" class="form-control"
-							placeholder="<spring:message code="dashboard.actual_options_search"/>" />
-						<input type="submit" id="searchsubmit"
-							value="<spring:message code="dashboard.actual_reset"/>"
-							class="btn btn-primary" />
-					</form>
-					<a class="btn btn-danger btn-md"
-						href="dashboard?page=${ 0 }&column=&search=&nbObject=10"> <spring:message
-							code="dashboard.actual_options" /></a>
-					<c:if test="${fn:length(model.options) > 0 }">
-						<p class="options">
-							<span><spring:message code="dashboard.actual_search" /></span>
-							<c:forEach items="${ model.options }" var="option">
-								<span> ${option.key } value : ${option.value }</span>
-							</c:forEach>
-						</p>
-					</c:if>
-				</div>
-				<div class="pull-right">
-					<a class="btn btn-success" id="addComputer" href="addComputer"><spring:message
-							code="dashboard.add_computer" /></a> <a class="btn btn-default"
-						id="editComputer" href="#" onclick="$.fn.toggleEditMode();"><spring:message
-							code="dashboard.edit" /></a>
-				</div>
-			</div> --%>
 		</div>
 
 		<form id="deleteForm" action="deleteComputer" method="POST">
