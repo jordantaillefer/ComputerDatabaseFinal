@@ -37,7 +37,7 @@ public class PaginationTag extends SimpleTagSupport {
 
       }
       out.println(
-          "><a class='mini-fab mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab' href='dashboard?numPage="
+          "><a class='mini-fab mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab' href='dashboard?page="
               + (element - 1) + "&column=" + column + "&search=" + search + "&nbObject=" + nbObject
               + "'><span>" + element + "</span></a></li>");
     }

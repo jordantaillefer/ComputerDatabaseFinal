@@ -22,29 +22,29 @@
 <body id="dashboard">
 <!-- Always shows a header, even in smaller screens. -->
 	<div class="panel-header">
-	<div class="mdl-layout mdl-js-layout">
-	  <header class="layout_header">
-	    <div class="mdl-layout__header-row">
-	      <span class="mdl-layout-title"> <a href="dashboard" >Computer Database</a></span>
-	      <form id="search-form" action="#">
-	      		<label class="mdl-button mdl-js-button mdl-button--icon">
-				  <i class="material-icons">search</i>
-				</label>
-			   <div class="mdl-textfield mdl-js-textfield">
-			    <input class="mdl-textfield__input" type="text" id="sample1">
-			    <label class="mdl-textfield__label" for="sample1">Search</label>
-			  </div>
-
-			</form>
-	      <div class="mdl-layout-spacer"></div>
-	      <nav class="mdl-navigation mdl-layout--large-screen-only">
-	      
-	      	
-	      </nav>
-	    </div>
-	  </header>
+		<div class="mdl-layout mdl-js-layout">
+		  <header class="layout_header">
+		    <div class="mdl-layout__header-row">
+		      <span class="mdl-layout-title"> <a href="dashboard" >Computer Database</a></span>
+		      <form id="search-form" action="#">
+		      		<label class="mdl-button mdl-js-button mdl-button--icon">
+					  <i class="material-icons">search</i>
+					</label>
+				   <div class="mdl-textfield mdl-js-textfield">
+				    <input class="mdl-textfield__input" type="text" id="sample1">
+				    <label class="mdl-textfield__label" for="sample1">Search</label>
+				  </div>
+	
+				</form>
+		      <div class="mdl-layout-spacer"></div>
+		      <nav class="mdl-navigation mdl-layout--large-screen-only">
+		      
+		      	
+		      </nav>
+		    </div>
+		  </header>
+		</div>
 	</div>
-</div>
 	<section id="main">
 	<div class="sidebar">
 		<div class="panel-icons">

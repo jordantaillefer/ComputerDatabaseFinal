@@ -45,11 +45,11 @@
 							<span class="highlight"></span> <span class="bar"></span> <label><spring:message code="dashboard.computer_name"/></label>
 						</div>
 						<div class="group">
-							<input type="date" id="introduced" name="introduced" required>
+							<input type="date" id="introduced" name="introduced">
 							<span class="highlight"></span> <span class="bar"></span>
 						</div>
 						<div class="group">
-							<input type="date" id="discontinued" name="discontinued" required>
+							<input type="date" id="discontinued" name="discontinued">
 							<span class="highlight"></span> <span class="bar"></span>
 						</div>
 						<div class="group">
@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-actions">
 							<button type="submit" class="button buttonBlue">
-								<spring:message code="login.signin"/>
+								<spring:message code="add.btn_submit"/>
 								<div class="ripples buttonRipples">
 									<span class="ripplesCircle"></span>
 								</div>
