@@ -13,6 +13,9 @@
 			rel="stylesheet">
 		<link href="<c:url value="/resources/css/material.css" />"
 			rel="stylesheet">
+			
+				
+		<link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 	
 	</head>
 	
@@ -43,11 +46,11 @@
 						</div>
 						<div class="group">
 							<input type="date" id="introduced" name="introduced" required>
-							<span class="highlight"></span> <span class="bar"></span> <label><spring:message code="dashboard.computer_introduced"/></label>
+							<span class="highlight"></span> <span class="bar"></span>
 						</div>
 						<div class="group">
 							<input type="date" id="discontinued" name="discontinued" required>
-							<span class="highlight"></span> <span class="bar"></span> <label><spring:message code="dashboard.computer_discontinued"/></label>
+							<span class="highlight"></span> <span class="bar"></span>
 						</div>
 						<div class="group">
 							<label for="companyId">Company</label> <select

@@ -13,6 +13,7 @@
 			rel="stylesheet">
 		<link href="<c:url value="/resources/css/material.css" />"
 			rel="stylesheet">
+		<link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
 	
 	</head>
 	

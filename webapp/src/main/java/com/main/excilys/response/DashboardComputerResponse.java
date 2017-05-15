@@ -2,7 +2,7 @@ package com.main.excilys.response;
 
 import com.main.excilys.model.dto.ComputerDto;
 import com.main.excilys.presentation.Page;
-import com.main.excilys.request.DashboardRequest;
+import com.main.excilys.request.DashboardComputerRequest;
 import com.main.excilys.service.ComputerService;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DashboardResponse {
+public class DashboardComputerResponse {
 
   private Map<String, String> options = new HashMap<>();
 
@@ -28,7 +28,7 @@ public class DashboardResponse {
   @Autowired
   private ComputerService computerService;
 
-  public DashboardResponse() {
+  public DashboardComputerResponse() {
     super();
   }
 
@@ -38,7 +38,7 @@ public class DashboardResponse {
    * @param dashboardRequest
    *          the request model of the dashboard
    */
-  public void fill(DashboardRequest dashboardRequest) {
+  public void fill(DashboardComputerRequest dashboardRequest) {
     this.doSetOptions(dashboardRequest.getColumn(), dashboardRequest.getSearch());
     this.doSetNbComputer(dashboardRequest.getNbObject());
     this.doSetPage(dashboardRequest.getPage());

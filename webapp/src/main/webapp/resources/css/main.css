@@ -1,3 +1,14 @@
+:root {
+	--main-color : #009688;
+	--secondary-color : #3FB0A6;
+}
+#homeTitle {
+	color : var(--main-color);
+}
+a {
+	color : white;
+	text-decoration: none;
+}
 .navbar-cdb {
 	height: 64px;
 	width: 70%;
@@ -5,27 +16,220 @@
 
 body {
 	background: #EAF0FD;
-	padding-top: 70px;
-	padding-bottom: 70px;
 }
 
-footer {
+body a {
+	color : white;
+}
+
+.pagination .mini-fab:hover {
+	background-color: var(--secondary-color);
+}
+.pagination .mini-fab {
+	background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size : 1em;
+    margin: 0px 4px;
+}
+
+.active .mini-fab {
+	background-color: var(--secondary-color);
+}
+.number-page-panel {
+	position: fixed;
+	right: 68px;
+}
+
+.navbar-fixed-bottom {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	background: #FEFEFE;
+	background: var(--main-color);
 	border-top: 1px solid #CCC;
 	height: 60px;
+	z-index: 2;
 }
 
-footer .pagination {
-	margin: 10px 0;
-}
 
+.pagination {
+    margin: 10px 0;
+    list-style: none;
+    display: flex;
+    align-items : center;
+    justify-content : center;
+}
+.sortCol {
+    width: 23.5%;
+}
+.footer-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 footer .btn-group {
 	margin: 10px 10px;
 }
 
+.panel-header {
+	position: relative;
+    min-height: 164px;
+}
+body:before {
+    content: '';
+    height: 265px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--main-color);
+}
+.rowComputer {
+	cursor: pointer;
+}
+.delete-panel, .delete-checkbox-panel {
+    background-color: var(--main-color);
+    height: 100%;
+    position: absolute;
+    right: 100%;
+    top: -1px;
+    transition : width .3s ease-out;
+    width: 0px;
+    float: right;
+    filter: opacity(0%);
+}
+.rowComputer:hover .delete-panel {
+    width: 108px;
+    filter: opacity(100%);
+}
+.delete-checkbox-panel.selected {
+    transition : width .3s ease-out;
+	 width: 64px;
+    filter: opacity(100%);
+}
+.delete-panel .mdl-button {
+	min-width: 0px;
+	padding-left: 12px;
+}
+.dashboard-menu span {
+	margin-left : 16px;
+}
+body .mdl-card__supporting-text {
+    padding: 16px 32px 16px 124px;
+}
+@media (min-width: 1280px){
+		.sidebar {
+	    width: 200px;
+	    position: absolute;
+	    height: 100%;
+	    top: 0;
+	    left : 0;
+	}
+}
+
+.mdl-layout{
+    padding: 40px 0px;
+	background-color: var(--main-color);
+}
+.panel-header .mdl-layout__header-row {
+	padding: 0;
+}
+.panel-header .mdl-layout-title {
+	font-weight: 700;
+	font-size : 23px;
+}
+.layout_header {
+	color : white;
+    margin-left: 45px;
+}
+
+@media(min-width: 1280px) {
+	#main {
+    	padding: 0 200px 0px 200px;
+	    min-height: calc(100vh - 265px);
+	    position : relative;
+	}
+}
+.panel-icons {
+    height: 100px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content : center;
+    align-items : center;
+    padding-top: 16px;
+}
+
+.card {    
+	display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 200px;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    background: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    justify-content : center;
+    align-items : center;
+    padding-bottom : 32px;
+    
+    margin-bottom: 64px;
+}
+body .mdl-button--fab.mdl-button--colored{
+	background-color: var(--main-color);
+}
+.mdl-data-table {
+	width: 100%;
+}
+body .mdl-button--fab.mdl-button--colored:hover {
+		background-color: var(--secondary-color);
+}
+
+.dashboard-menu {
+    list-style: none;
+    height: auto;
+    width: auto;
+    min-width: 124px;
+    padding: 8px 0;
+    margin: 0;
+    clip: rect(0 0 0 0);
+}
+.dashboard-menu .mdl-menu__item {
+	opacity: 1;
+}
+#tableDashboard thead {
+	background-color: var(--main-color)
+}
+#search-form {
+	margin-left : 64px;
+	padding-right : 16px;
+    padding-left: 8px;
+	background-color: var(--secondary-color);
+	width: 70%;
+	border-radius : 4px;
+	color : white;
+}
+#search-form .mdl-textfield {
+	width: 95%;
+
+}
+#search-form .mdl-textfield__label {
+	background-color : inherit;
+}
+
+#search-form .mdl-textfield__label:after {
+	background-color : white;
+	
+}
 input[type='checkbox'] {
 	margin: 0;
 	padding: 0;
@@ -39,93 +243,34 @@ input[type='checkbox'] {
 	right: 40px;
 }
 
-#bottom-link-block {
-	position: fixed; /* keeps it on the bottom once in view */
-	bottom: 80px;
-	right: 40px;
-}
-
-.fab-goto-top, .fab-goto-bottom {
-	display: block;
-	width: 40px;
-	height: 40px;
-	background-color: #81D4FA;
-	border-radius: 50%;
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
-		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-}
-
-.fab-content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-	cursor: pointer;
-}
-
-.fab-content i {
-	margin-bottom: 5px;
-}
 
 th:hover, th:hover * {
-	background-color: #D0D0FF;
+	background-color: var(--secondary-color);
 	cursor: pointer;
 }
 
-th {
-	width: 23.5%;
+.dashboard-fab-add{
+	position: fixed;
+	bottom: 90px;
+	right: 64px;
 }
-
-#actions {
-	min-height: 72px;
+.dashboard-fab-delete{
+	position: fixed;
+	bottom: 160px;
+	right: 64px;
 }
-
-#actions div {
-	display: flex;
+.dashboard-fab-go-to-bottom{
+	position: fixed;
+	bottom: 90px;
+	left: 64px;
 }
-
-#actions a {
-	height: 34px;
-	margin-left: 7px;
-	margin-right: 7px;
+.dashboard-fab-go-to-top{
+	position: fixed;
+	bottom: 160px;
+	left: 64px;
 }
-
-.options {
-	display: flex;
-	flex-direction: column;
-}
-
-.options span:first-child {
-	font-weight: bold;
-}
-
-#header-form-login {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #FFF;
-}
-
-#header-form-login * {
-	color: #FFF;
-}
-
-form#header-form-login .group {
-	width: 100%;
-	margin-right: 16px;
-}
-
-.navbar-cdb #brand-cdb {
-	color: #FFF;
-}
-
-.form-login-panel {
-	float: right;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
+.mdl-checkbox {
+	transition : all 0.5s ease-in;
 }
 
 .brand-panel #brand-cdb {
@@ -135,7 +280,9 @@ form#header-form-login .group {
 .picto-flag {
 	width: 24px;
 	height: 24px;
-	margin-left: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+
 }
 
 .brand-panel {

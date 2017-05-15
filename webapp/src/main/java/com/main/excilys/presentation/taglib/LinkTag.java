@@ -18,9 +18,11 @@ public class LinkTag extends SimpleTagSupport {
   @Override
   public void doTag() throws JspException, IOException {
     JspWriter out = this.getJspContext().getOut();
-    out.println("<li><a href='dashboard?page=" + page + "&column=" + column + "&search=" + search
-        + "&nbObject=" + nbObject + "'aria-label='" + type + "' id='" + type
-        + "'><span aria-hidden='true'>" + label + "</span></a></li>");
+    out.println(
+        "<li><a class='mini-fab mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab' "
+            + "href='dashboard?page=" + page + "&column=" + column + "&search=" + search
+            + "&nbObject=" + nbObject + "'aria-label='" + type + "' id='" + type
+            + "'><span aria-hidden='true'>" + label + "</span></a></li>");
   }
 
   public void setPage(int page) {
