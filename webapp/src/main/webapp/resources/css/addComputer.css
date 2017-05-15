@@ -3,6 +3,14 @@
 	--secondary-color : #3FB0A6;
 }
 
+.fab-btn{
+	
+	position: fixed;
+	bottom: 64px;
+	right: 64px;
+	
+}
+
 .main-panel form {
 	width: 600px;
 	background: #fafafa;

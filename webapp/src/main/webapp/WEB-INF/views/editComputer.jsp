@@ -10,6 +10,9 @@
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/materialize.min.css" />"
 	rel="stylesheet">
+<link href="/webapp/resources/css/material.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
@@ -19,43 +22,56 @@
 
 			<form id="form-add" action="editComputer" method="post">
 				<div class="title-add">
-					<span id="text-title-add"><spring:message code="edit.title"/>${ computerToEdit.name } </span>
+					<span id="text-title-add"><spring:message code="edit.title" />${ computerToEdit.name }
+					</span>
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}" id="_csrf"
 					value="${_csrf.token}" /> <input type="hidden"
 					value="${ computerToEdit.id }" name="id" id="id" />
 				<div class="input-field">
-					<input type="text" name="name" id="name" value="${ computerToEdit.name }"> 
-						<label for="name"><spring:message code="add.computer_name"/></label>
+					<input type="text" name="name" id="name"
+						value="${ computerToEdit.name }"> <label for="name"><spring:message
+							code="add.computer_name" /></label>
 				</div>
 				<div class="input-field">
-					<input type="text" class=" datepicker " id="introduced" name="introduced" value="${ computerToEdit.introduced }">
-					<label for="introduced"><spring:message code="add.computer_date_introduced"/></label>
+					<input type="text" class=" datepicker " id="introduced"
+						name="introduced" value="${ computerToEdit.introduced }">
+					<label for="introduced"><spring:message
+							code="add.computer_date_introduced" /></label>
 				</div>
 				<div class="input-field">
-					<input type="text" class="datepicker" id="discontinued" name="discontinued" value="${ computerToEdit.discontinued }">
-					<label for="discontinued"><spring:message code="add.computer_date_discontinued"/></label>
+					<input type="text" class="datepicker" id="discontinued"
+						name="discontinued" value="${ computerToEdit.discontinued }">
+					<label for="discontinued"><spring:message
+							code="add.computer_date_discontinued" /></label>
 				</div>
 				<div class="input-field">
 					<select name="companyId" id="companyId">
-					<option value="0"><spring:message code="add.computer_no_company"/></option>
+						<option value="0"><spring:message
+								code="add.computer_no_company" /></option>
 						<c:forEach items="${listCompanyDto}" var="companyDto">
 							<option value="${companyDto.id }"
 								<c:if test="${ companyDto.id  == computerToEdit.companyId}"> 
                      <c:out value="selected"/>
                    </c:if>>${ companyDto.name }</option>
 						</c:forEach>
-					</select> <label><spring:message code="add.company"/></label>
+					</select> <label><spring:message code="add.company" /></label>
 				</div>
 				<div class="form-actions">
 					<button id="submit" type="submit"
 						class="waves-effect waves-light btn">
 						<div class="ripples buttonRipples">
-							<span class="ripplesCircle"><spring:message code="add.btn_submit"/></span>
+							<span class="ripplesCircle"><spring:message
+									code="add.btn_submit" /></span>
 						</div>
 					</button>
 				</div>
 			</form>
+		</div>
+		<div class="fab-btn">
+			<a href="/webapp/dashboard"
+		class="btn-floating btn-large waves-effect waves-light "><i
+		class="material-icons">home</i></a>
 		</div>
 	</div>
 
