@@ -25,30 +25,13 @@ $(function() {
 
     $.fn.setCheckboxValues = function(formFieldName, checkboxFieldName) {
 
-        var str = $('.' + checkboxFieldName + ':checked').map(function() {
+        var str = $('.is-checked input').map(function() {
             return this.value;
         }).get().join();
         console.log(str)
         
         $(this).attr('value',str);
         
-        return this;
-    };
-
-}( jQuery ));
-
-// Function toggleEditMode
-(function ( $ ) {
-
-    $.fn.toggleEditMode = function() {
-        if($(".editMode").is(":visible")) {
-            $(".editMode").hide();
-            $("#editComputer").text("Edit");
-        }
-        else {
-            $(".editMode").show();
-            $("#editComputer").text("View");
-        }
         return this;
     };
 
@@ -92,11 +75,40 @@ $("#button-add-computer").on("click", () => {
 	 
 	$(location).attr('href', "addComputer")
 })
-$(document).on("click","#button-delete-computer", function() {
-	if(!$(".delete-checkbox-panel").hasClass("selected")){
+
+$("#button-open-delete").on("click" , function() {
+	if(!$(this).hasClass("selected")){
+
+		$(this).addClass(" red selected")
+		$(".dashboard-fab-check-all").addClass("selected")
+		$(".dashboard-fab-delete").addClass("selected")
+		$(".open-clear ").fadeIn("fast")
+		$(".dashboard-fab-delete ").fadeIn()
+		$(".dashboard-fab-check-all ").fadeIn()
+		$(".open-delete ").fadeOut("fast")
+		$(".delete-checkbox-panel").fadeIn("fast")
 		$(".delete-checkbox-panel").addClass("selected")
 	} else {
-		$(".delete-checkbox-panel").removeClass("selected")
+		$(this).removeClass("red selected")
+		$(".dashboard-fab-check-all").removeClass("selected")
+		$(".dashboard-fab-delete").removeClass("selected")
+		$(".open-delete ").fadeIn("fast")
+		$(".dashboard-fab-delete ").fadeOut()
+		$(".dashboard-fab-check-all ").fadeOut()
+		$(".open-clear ").fadeOut("fast")
 		
+		$(".delete-checkbox-panel").fadeOut("fast")
+		$(".delete-checkbox-panel").removeClass("selected")
 	}
+})
+
+$("#button-check-all").on("click",function () {
+	if(!$(this).hasClass("selected")){
+		 $('.cb').addClass("is-checked")
+		    $(this).addClass("selected")
+	} else {
+		$('.cb').removeClass("is-checked")
+	    $(this).removeClass("selected")
+	}
+   
 })

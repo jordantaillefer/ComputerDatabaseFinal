@@ -71,7 +71,6 @@
 			</table>
 		</div>
 	</div>
-	</div>
 	</section>
 	
 	<div class="dashboard-fab-go-to-top">
