@@ -7,78 +7,70 @@ var companyisok = true;
 
 $(document).ready(function(){
 
+
+	// INIT OF BUTTON
 	$('#submit').prop('disabled', true);
 
-
-	$('#computerName').change(function(){
-
-		if(!$('#name').val().match("^[a-zA-Z0-9 -._]+$")) {
-			$('#name').parent().addClass('has-error');
+	// ONCHANGE VALIDATION FOR EACH INPUT
+	$('#name').change(function(){
+		if(!$('#name').val().match("^[a-zA-Z0-9 -._]+$") || $('#name').val()=="") {
+			$('#name').removeClass('valid');
+			$('#name').addClass('invalid');
 			nameisok = false;
 			allisright();
 		}else {
-
-			$('#name').parent().removeClass('has-error');
-			$('#name').parent().addClass('has-success');
+			$('#name').removeClass('invalid');
+			$('#name').addClass('valid');
 			nameisok = true;
 			allisright();
 		}
-
-
 	});
 
 	$('#introduced').change(function(){
 		if($('#introduced').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") || $('#introduced').val()=="") {
-
-			$('#introduced').parent().removeClass('has-error');
-			$('#introduced').parent().addClass('has-success');
+			$('#introduced').removeClass('invalid');
+			$('#introduced').addClass('valid');
 			diisok = true;
 			allisright();
-
 		}else {
-			$('#introduced').parent().addClass('has-error');
+			$('#introduced').removeClass('valid');
+			$('#introduced').addClass('invalid');
 			diisok=false;
 			allisright();
 		}
-
-
 	});
 
 	$('#discontinued').change(function(){
 		if($('#discontinued').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") || $('#discontinued').val()=="") {
-
-			$('#discontinued').parent().removeClass('has-error');
-			$('#discontinued').parent().addClass('has-success');
+			$('#discontinued').removeClass('invalid');
+			$('#discontinued').addClass('valid');
 			ddisok = true;
 			allisright();
-
 		}else {
-			$('#discontinued').parent().addClass('has-error');
+			$('#discontinued').removeClass('valid');
+			$('#discontinued').addClass('invalid');
 			ddisok=false;
 			allisright();
 		}
-
 	});
 
 	$('#companyId').change(function(){
 		if($('#companyId').val().match("^[0-9]+$") || $('#companyId').val()==0) {
-
-			$('#companyId').parent().removeClass('has-error');
-			$('#companyId').parent().addClass('has-success');
+			$('#companyId').removeClass('invalid');
+			$('#companyId').addClass('valid');
 			company = true;
 			allisright();
-
 		}else {
-			$('#companyId').parent().addClass('has-error');
+			$('#companyId').removeClass('valid');
+			$('#companyId').addClass('invalid');
 			company=false;
 			allisright();
 		}
-
-
 	});
+	
+});
 
-
-	});
+// VALIDATION OF ALL INPUTS TO ENABLE SUBMIT BUTTON
 
 var allisright = function(){
 
@@ -87,24 +79,28 @@ var allisright = function(){
 			if($('#introduced').val()!="") {
 				if( new Date($('#introduced').val()) < new Date($('#discontinued').val())) {
 					$('#submit').prop('disabled', false);
-					$('#introduced').parent().removeClass('has-error');
-					$('#introduced').parent().addClass('has-success');
-					$('#discontinued').parent().removeClass('has-error');
-					$('#discontinued').parent().addClass('has-success');
+					$('#introduced').removeClass('invalid');
+					$('#introduced').addClass('valid');
+					$('#discontinued').removeClass('invalid');
+					$('#discontinued').addClass('valid');
 				}else {
 					$('#submit').prop('disabled', true);
-					$('#introduced').parent().addClass('has-error');
-					$('#discontinued').parent().addClass('has-error');
+					$('#introduced').addClass('invalid');
+					$('#discontinued').addClass('invalid');
 				}
 			}else{
-				$('#submit').prop('disabled', true);
+				$('#introduced').removeClass('invalid');
+				$('#introduced').addClass('valid');
+				$('#discontinued').removeClass('invalid');
+				$('#discontinued').addClass('valid');
+				$('#submit').prop('disabled', false);
 			}	
 		}else{
 			$('#submit').prop('disabled', false);
-			$('#introduced').parent().removeClass('has-error');
-			$('#introduced').parent().addClass('has-success');
-			$('#discontinued').parent().removeClass('has-error');
-			$('#discontinued').parent().addClass('has-success');
+			$('#introduced').removeClass('invalid');
+			$('#introduced').addClass('valid');
+			$('#discontinued').removeClass('invalid');
+			$('#discontinued').addClass('valid');
 		}
 	}else{
 		$('#submit').prop('disabled', true);
