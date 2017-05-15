@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.model.User;
 import com.main.excilys.repository.UserRepository;
@@ -18,6 +19,7 @@ public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     private EntityManager session;
 
+    @Transactional
     @Override
     public Optional<User> save(User user) {
         if (user == null) {

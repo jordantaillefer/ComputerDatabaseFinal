@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.model.UserRole;
 import com.main.excilys.repository.UserRoleRepository;
@@ -16,6 +17,7 @@ public class UserRoleRepositoryImpl implements UserRoleRepository {
     @PersistenceContext
     private EntityManager session;
 
+    @Transactional
     @Override
     public Optional<UserRole> save(UserRole userRole) {
         if (userRole == null) {

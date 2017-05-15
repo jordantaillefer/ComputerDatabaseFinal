@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.excilys.model.Company;
 import com.main.excilys.model.Computer;
@@ -40,7 +41,6 @@ public class ComputerRepositoryImpl implements ComputerRepository {
                 .setMaxResults(nbObjectToGet).setFirstResult(numPage * nbObjectToGet);
         query.setParameter("search", searchPattern);
         List<Computer> computers = query.getResultList();
-        System.out.println(computers.size());
         return computers;
     }
 
@@ -70,6 +70,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     }
 
     @Override
+    @Transactional
     public Optional<Computer> save(Computer computer) {
         if (computer == null) {
             throw new IllegalArgumentException("can't save a null object");
@@ -111,6 +112,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         return Optional.ofNullable(computer);
     }
 
+    @Transactional
     @Override
     public void delete(long idToDelete) {
         try {
@@ -147,6 +149,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
         return query.getResultList().get(0).intValue();
     }
 
+    @Transactional
     @Override
     public void deleteComputerByCompany(Company company) {
         this.session.createQuery(HQL_DELETE_COMPUTER_BY_COMPANY).setParameter("company", company)

@@ -1,9 +1,11 @@
 package com.main.excilys.config;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+@Configuration
 @ComponentScan(basePackages = { "com.main.excilys" })
 @EnableTransactionManagement
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

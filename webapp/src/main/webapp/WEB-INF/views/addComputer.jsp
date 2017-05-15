@@ -30,7 +30,7 @@
 			<div class="addComputer-main-panel">
 				<div class="addComputer-form-panel">
 					
-					<form id="addComputerForm" action="addComputerAction"
+					<form id="addComputerForm" action="addComputer"
 							method="POST">
 							<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
