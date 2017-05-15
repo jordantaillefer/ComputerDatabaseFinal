@@ -53,9 +53,8 @@
 		</div>
 		<div class="menu">
 			<ul class="dashboard-menu">
-			  <li class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span>Computer</span></li>
-			  <li class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">work</i><span>Login</span></li>
-			  <li class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span>Users</span></li>
+			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span>Computer</span></li>
+			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span>Users</span></li>
 			</ul>
 		</div>
 	</div>
@@ -237,6 +236,7 @@
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 	<script src="<c:url value="/resources/js/dashboard.js" />"></script>
 	<script src="<c:url value="/resources/js/main.js" />"></script>
+	<script src="<c:url value="/resources/js/menu.js" />"></script>
 	<script src="<c:url value="/resources/js/material.min.js" />"></script>
 </body>
 </html>

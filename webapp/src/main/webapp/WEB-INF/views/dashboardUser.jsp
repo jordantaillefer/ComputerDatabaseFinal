@@ -20,6 +20,9 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/material.css" />"
 	rel="stylesheet">
+	
+<link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 </head>
@@ -108,7 +111,13 @@
 		onclick="$('html,body').animate({scrollTop: $(document).height()},'slow');return false;">
 			<i class="glyphicon glyphicon-chevron-down"></i>
 	</span>
+	
 	</span>
+	<div class="dashboard-fab-add">
+		<button id="button-add-user" class="btn-floating btn-large waves-effect waves-light red">
+		  <i class="material-icons">add</i>
+		</button>
+	</div>
 
 	<footer class="navbar-fixed-bottom">
 		<%@ include file="core/footer.jsp"%>
@@ -152,8 +161,8 @@
 		</div> --%>
 	</footer>
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
-	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-	<script src="<c:url value="/resources/js/dashboard.js" />"></script>
+	<script src="<c:url value="/resources/js/materialize.min.js" />"></script>
+	<script src="<c:url value="/resources/js/dashboardUser.js" />"></script>
 	<script src="<c:url value="/resources/js/main.js" />"></script>
 </body>
 </html>
