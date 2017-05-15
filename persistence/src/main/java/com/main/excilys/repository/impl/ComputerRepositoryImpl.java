@@ -31,7 +31,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     private static final String    HQL_DELETE_COMPUTER_BY_COMPANY                = "delete from Computer c where c.company = :company";
     private static final String    HQL_SELECT_ONE_COMPUTER                       = "Select c From Computer as c where c.id like :id";
     private static final LocalDate TIMESTAMP_MIN                                 = LocalDate
-            .of(1970, Month.JANUARY, 0);
+            .of(1970, Month.JANUARY, 1);
     private static final LocalDate TIMESTAMP_MAX                                 = LocalDate
             .of(2038, Month.JANUARY, 18);
 
