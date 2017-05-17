@@ -1,10 +1,5 @@
 package com.main.excilys.response;
 
-import com.main.excilys.model.dto.ComputerDto;
-import com.main.excilys.presentation.Page;
-import com.main.excilys.request.DashboardComputerRequest;
-import com.main.excilys.service.ComputerService;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,6 +8,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.main.excilys.model.dto.ComputerDto;
+import com.main.excilys.presentation.Page;
+import com.main.excilys.request.DashboardComputerRequest;
+import com.main.excilys.service.ComputerService;
 
 @Component
 public class DashboardComputerResponse {
@@ -48,12 +48,22 @@ public class DashboardComputerResponse {
   private void setListComputer() {
     listComputerDto = computerService.getComputerInRange(pageComputerDto.getPage(),
         pageComputerDto.getNbObjectPerPage(), options);
+
   }
 
   private void doSetPage(int page) {
     if (page >= 0 && page - 1 < pageComputerDto.getMaxPage()) {
       pageComputerDto.setPage(page);
     }
+        if (options.containsKey("search") && options.get("search") != null
+                && !options.get("search").isEmpty()) {
+            long nbComputer = computerService.getNbComputer(options);
+            long nbPage = nbComputer / pageComputerDto.getNbObjectPerPage();
+            if (nbComputer != 0 && nbComputer % pageComputerDto.getNbObjectPerPage() == 0) {
+                nbPage--;
+            }
+            pageComputerDto.setMaxPage(nbPage);
+        }
   }
 
   private void doSetNbComputer(int nbObject) {
