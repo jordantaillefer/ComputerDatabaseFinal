@@ -175,7 +175,6 @@
 		  <i class="material-icons">delete</i>
 		</button>
 	</div>
-	
 
 	 <footer class="navbar-fixed-bottom">
 		<%@ include file="core/footer.jsp"%>
