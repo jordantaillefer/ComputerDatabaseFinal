@@ -38,7 +38,7 @@
 				    <input class="mdl-textfield__input" name="search" type="text" id="search">
 				    <label class="mdl-textfield__label" for="search"><spring:message code="dashboard.search" /></label>
 				  </div>
-	
+				</div>
 				</form>
 		      <div class="mdl-layout-spacer"></div>
 		      <div class="navigation mdl-navigation">
