@@ -30,16 +30,14 @@
 		      	<div class="form-search-content">
 		      		<div class="button-submit">
 			      		<button type="submit" class="mdl-button mdl-js-button mdl-button--icon">
-					  		<i class="material-icons">search</i>
-		      			</button>
+				  		<i class="material-icons">search</i>
+	      			</button>
 		      		</div>
 			      	
 				   <div class="mdl-textfield mdl-js-textfield">
 				    <input class="mdl-textfield__input" name="search" type="text" id="search">
-				    <label class="mdl-textfield__label" for="search">Search</label>
-				 	</div>
-		      	</div>
-	      			
+				    <label class="mdl-textfield__label" for="search"><spring:message code="dashboard.search" /></label>
+				  </div>
 	
 				</form>
 		      <div class="mdl-layout-spacer"></div>
@@ -65,8 +63,8 @@
 		</div>
 		<div class="menu">
 			<ul class="dashboard-menu">
-			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span>Computer</span></li>
-			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span>Users</span></li>
+			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span><spring:message code="dashboard.menu.computer" /></span></li>
+			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span><spring:message code="dashboard.menu.user" /></span></li>
 			</ul>
 		</div>
 	</div>
@@ -181,7 +179,6 @@
 		  <i class="material-icons">delete</i>
 		</button>
 	</div>
-	
 
 	 <footer class="navbar-fixed-bottom">
 		<%@ include file="core/footer.jsp"%>

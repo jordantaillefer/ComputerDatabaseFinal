@@ -31,11 +31,11 @@
 		      <div class="navigation mdl-navigation">
 		        
 		        <sec:authorize access="isAnonymous()"> 
-		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />">Register</a>
-		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />">Login</a>
+		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />"><spring:message code="dashboard.register"/></a>
+		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />"><spring:message code="dashboard.login"/></a>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
-					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />">Logout</a>
+					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />"><spring:message code="dashboard.logout"/></a>
 				</sec:authorize>
 		      </div>
 		    </div>
@@ -50,8 +50,8 @@
 		</div>
 		<div class="menu">
 			<ul class="dashboard-menu">
-			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span>Computer</span></li>
-			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span>Users</span></li>
+			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span><spring:message code="dashboard.menu.computer" /></span></li>
+			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span><spring:message code="dashboard.menu.user" /></span></li>
 			</ul>
 		</div>
 	</div>
@@ -66,9 +66,9 @@
 			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="tableDashboard">
 				<thead>
 					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Username</th>
+						<th class="mdl-data-table__cell--non-numeric"><spring:message code="dashboard.username" /></th>
 						<th class="mdl-data-table__cell--non-numeric">Role</th>
-						<th class="mdl-data-table__cell--non-numeric">Enabled</th>
+						<th class="mdl-data-table__cell--non-numeric"><spring:message code="dashboard.enabled" /></th>
 					</tr>
 				</thead>
 				<tbody id="results">

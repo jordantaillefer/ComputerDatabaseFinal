@@ -23,7 +23,7 @@
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 				<div class="title-add">
-					<span id="text-title-add"><spring:message code="add.title" /></span>
+					<span id="text-title-add"><spring:message code="addUser.title" /></span>
 				</div>
 				<div class="input-field">
 					<input type="text" id="username" name="username" required>
@@ -37,7 +37,8 @@
 				</div>
 				<div class="input-field">
 						<input type="checkbox" class="filled-in"  id="filled-in-box" name="enabled"/>
-						 <label id="enable" for="filled-in-box"> Enabled </label>
+						 <label id="enable" for="filled-in-box"> <spring:message
+							code="addUser.enabled" /> </label>
 				</div>
 				<div class="form-actions">
 					<button id="submit" type="submit"
