@@ -222,10 +222,8 @@ input[type='checkbox'] {
 	right: 40px;
 }
 
-
-th:hover, th:hover * {
-	background-color: var(--secondary-color);
-	cursor: pointer;
+#main th {
+	color : white;
 }
 
 .dashboard-fab-add{

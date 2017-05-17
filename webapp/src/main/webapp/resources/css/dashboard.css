@@ -20,6 +20,16 @@ body {
 
 body a {
 	color : white;
+	
+}
+.form-search-content {
+	display: flex;
+}
+.button-submit {
+    margin: 12px;
+}
+table a {
+    font-weight: 700;
 }
 
 .list-mini-fab .mini-fab:hover {
@@ -40,6 +50,7 @@ body a {
 .number-page-panel {
 	position: fixed;
 	right: 68px;
+	bottom : 0;
 }
 
 .navbar-fixed-bottom {
@@ -186,7 +197,7 @@ body .mdl-card__supporting-text {
     padding-top: 16px;
 }
 
-.card {    
+#main .card {    
 	display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
