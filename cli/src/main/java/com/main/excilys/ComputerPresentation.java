@@ -24,10 +24,9 @@ public class ComputerPresentation {
    *           exception
    */
   public void printComputerDetails(long idToSelect) throws ComputerDbException {
-    String url = "computers";
-    Map<String, String> params = new HashMap<>();
-    params.put("id", String.valueOf(idToSelect));
-    String response = RestClient.doGet(url, params);
+    String url = "computers/%s";
+    url = String.format(url, idToSelect);
+    String response = RestClient.doGet(url);
     System.out.println(response);
   }
 
@@ -80,11 +79,12 @@ public class ComputerPresentation {
    * @throws ComputerDbException
    *           exception
    */
-  public void listComputerByPage(long id) throws ComputerDbException {
+  public void listComputerByPage(long page) throws ComputerDbException {
 
-    String url = "http://localhost:8080/ComputerDatabase/computers?page=%s";
-    url = String.format(url, id);
-    String response = RestClient.doGet(url);
+    String url = "/computers";
+    Map<String, String> params = new HashMap<>();
+    params.put("page", String.valueOf(page));
+    String response = RestClient.doGet(url, params);
     System.out.println(response + " computers");
     List<ComputerRest> arrResponse = new Gson().fromJson(response,
         new TypeToken<List<ComputerRest>>() {

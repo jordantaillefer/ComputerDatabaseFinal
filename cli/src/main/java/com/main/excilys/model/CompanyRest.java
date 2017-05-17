@@ -3,6 +3,9 @@ package com.main.excilys.model;
 public class CompanyRest {
   private long id;
   private String name;
+  public CompanyRest() {
+
+  }
 
   public CompanyRest(long id, String name) {
     this.id = id;

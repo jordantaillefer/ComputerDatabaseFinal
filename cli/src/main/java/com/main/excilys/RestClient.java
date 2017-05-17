@@ -4,6 +4,7 @@ import com.main.excilys.model.ComputerRest;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -23,15 +24,15 @@ public enum RestClient {
   }
 
   public static String doGet(String url, Map<String, String> params) {
-    ///////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////
     Client client = ClientBuilder.newClient();
-    WebTarget webTarget = client.target("http://localhost:8080/ComputerDatabase").path(url);
-    params.forEach((key, value) -> {
-      webTarget.queryParam(key, value);
-    });
+    WebTarget webTarget = client.target("http://localhost:8080/webapp").path(url);
+
+    for (Entry<String, String> entry : params.entrySet()) {
+      String key = entry.getKey();
+      String value = entry.getValue();
+      webTarget = webTarget.queryParam(key, value);
+
+    }
 
     Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
     Response response = invocationBuilder.get();
@@ -47,7 +48,7 @@ public enum RestClient {
   public static String doPost(String url, ComputerRest newComputerRest) {
 
     Client client = ClientBuilder.newClient();
-    WebTarget webTarget = client.target("http://localhost:8080/ComputerDatabase").path(url);
+    WebTarget webTarget = client.target("http://localhost:8080/webapp").path(url);
 
     String authString = "test:cdb";
     String authStringEnc = new String(Base64.encode(authString.getBytes()));
@@ -67,7 +68,7 @@ public enum RestClient {
 
   public static String doPut(String url, ComputerRest updateComputerRest) {
     Client client = ClientBuilder.newClient();
-    WebTarget webTarget = client.target("http://localhost:8080/ComputerDatabase").path(url);
+    WebTarget webTarget = client.target("http://localhost:8080/webapp").path(url);
 
     String authString = "test:cdb";
     String authStringEnc = new String(Base64.encode(authString.getBytes()));
