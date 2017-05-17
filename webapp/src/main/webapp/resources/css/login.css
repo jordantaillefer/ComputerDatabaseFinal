@@ -14,6 +14,14 @@
 	flex-direction : column;
 }
 
+.fab-btn{
+	
+	position: fixed;
+	bottom: 64px;
+	right: 64px;
+	
+}
+
 .main-panel {
 	display : flex;
 	justify-content : center;

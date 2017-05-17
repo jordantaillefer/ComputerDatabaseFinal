@@ -48,6 +48,11 @@ $(function() {
     };
 }( jQuery ));
 
+$(".button-delete-computer").on("click", function(){
+	 if (confirm("Are you sure you want to delete the selected computer?")) { 
+         $(this).submit();
+     }
+})
 
 
 //Event handling
