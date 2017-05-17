@@ -1,7 +1,5 @@
 package com.main.excilys.presentation;
 
-import com.main.excilys.service.ComputerService;
-
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
@@ -9,6 +7,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.main.excilys.service.ComputerService;
 
 @Component
 public class Page {
@@ -110,12 +110,7 @@ public class Page {
    *          the maxPage to set
    */
   public void setMaxPage(long l) {
-    if (nbObject != 0 && nbObject % nbObjectPerPage > 0) {
       this.maxPage = l;
-    } else {
-      this.maxPage = l - 1;
-    }
-
   }
 
   public static void decrementNbObject() {

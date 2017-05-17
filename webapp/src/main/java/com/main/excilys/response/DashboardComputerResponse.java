@@ -58,11 +58,11 @@ public class DashboardComputerResponse {
         if (options.containsKey("search") && options.get("search") != null
                 && !options.get("search").isEmpty()) {
             long nbComputer = computerService.getNbComputer(options);
-            long nbPage = nbComputer / pageComputerDto.getNbObjectPerPage();
+            long numeroOfLastPage = nbComputer / pageComputerDto.getNbObjectPerPage();
             if (nbComputer != 0 && nbComputer % pageComputerDto.getNbObjectPerPage() == 0) {
-                nbPage--;
+                numeroOfLastPage--;
             }
-            pageComputerDto.setMaxPage(nbPage);
+            pageComputerDto.setMaxPage(numeroOfLastPage);
         }
   }
 
