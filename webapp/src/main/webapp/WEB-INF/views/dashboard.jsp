@@ -32,7 +32,7 @@
 	      			</button>
 				   <div class="mdl-textfield mdl-js-textfield">
 				    <input class="mdl-textfield__input" name="search" type="text" id="search">
-				    <label class="mdl-textfield__label" for="search">Search</label>
+				    <label class="mdl-textfield__label" for="search"><spring:message code="dashboard.search" /></label>
 				  </div>
 	
 				</form>
@@ -40,11 +40,11 @@
 		      <div class="navigation mdl-navigation">
 		        
 		        <sec:authorize access="isAnonymous()"> 
-		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />">Register</a>
-		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />">Login</a>
+		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />"><spring:message code="dashboard.register"/></a>
+		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />"><spring:message code="dashboard.login"/></a>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
-					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />">Logout</a>
+					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />"><spring:message code="dashboard.logout"/></a>
 				</sec:authorize>
 		      </div>
 		    </div>
@@ -59,8 +59,8 @@
 		</div>
 		<div class="menu">
 			<ul class="dashboard-menu">
-			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span>Computer</span></li>
-			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span>Users</span></li>
+			  <li id="menu_dashboard" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">dvr</i><span><spring:message code="dashboard.menu.computer" /></span></li>
+			  <li id="menu_dashboard_user" class="mdl-menu__item mdl-menu__item--full-bleed-divider"><i class="material-icons">account_circle</i><span><spring:message code="dashboard.menu.user" /></span></li>
 			</ul>
 		</div>
 	</div>
