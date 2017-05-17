@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$('#submit').prop('disabled', true);
 
 	// ONCHANGE VALIDATION FOR EACH INPUT
-	$('#name').keydown(function(){
+	$('#name').keyup(function(){
 		if(!$('#name').val().match("^[a-zA-Z0-9 -._]+$") || $('#name').val()=="") {
 			$('#name').removeClass('valid');
 			$('#name').addClass('invalid');
@@ -25,6 +25,8 @@ $(document).ready(function(){
 			allisright();
 		}
 	});
+	
+	
 
 	$('#introduced').change(function(){
 		if( ( $('#introduced').val().match("^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$") && 

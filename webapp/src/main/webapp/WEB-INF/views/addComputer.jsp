@@ -48,7 +48,7 @@
 					<button id="submit" type="submit" 
 						class="waves-effect waves-light btn">
 						<div class="ripples buttonRipples">
-							<span class="ripplesCircle">Send</span>
+							<span class="ripplesCircle"><spring:message code="add.btn_submit"/></span>
 						</div>
 					</button>
 				</div>
