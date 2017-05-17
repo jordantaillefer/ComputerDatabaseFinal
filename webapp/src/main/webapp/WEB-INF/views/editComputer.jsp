@@ -37,7 +37,7 @@
 					<input type="text" class=" datepicker " id="introduced"
 						name="introduced" value="${ computerToEdit.introduced }">
 					<label for="introduced"><spring:message
-							code="add.computer_date_introduced" /> ( date > 1970 & < 2038 )</label>
+							code="add.computer_date_introduced" /> ( date > 1970 & < 2038 ) </label>
 				</div>
 				<div class="input-field">
 					<input type="text" class="datepicker" id="discontinued"

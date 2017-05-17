@@ -30,11 +30,11 @@
 				</div>
 				<div class="input-field">
 					<input type="text" class=" datepicker " id="introduced"
-						name="introduced"> <label for="introduced"><spring:message code="add.computer_date_introduced"/></label>
+						name="introduced"> <label for="introduced"><spring:message code="add.computer_date_introduced"/>  ( date > 1970 & < 2038 ) </label>
 				</div>
 				<div class="input-field">
 					<input type="text" class="datepicker" id="discontinued"
-						name="discontinued"> <label for="discontinued"><spring:message code="add.computer_date_discontinued"/></label>
+						name="discontinued"> <label for="discontinued"><spring:message code="add.computer_date_discontinued"/> ( date > 1970 & < 2038 ) </label>
 				</div>
 				<div class="input-field">
 					<select name="companyId" id="companyId">
