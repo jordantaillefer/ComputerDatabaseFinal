@@ -27,13 +27,19 @@
 		    <div class="mdl-layout__header-row">
 		      <span class="mdl-layout-title"> <a href="dashboard" >Computer Database</a></span>
 		      <form id="search-form" action="#" method="GET">
-	      			<button type="submit" class="mdl-button mdl-js-button mdl-button--icon">
-				  		<i class="material-icons">search</i>
-	      			</button>
+		      	<div class="form-search-content">
+		      		<div class="button-submit">
+			      		<button type="submit" class="mdl-button mdl-js-button mdl-button--icon">
+					  		<i class="material-icons">search</i>
+		      			</button>
+		      		</div>
+			      	
 				   <div class="mdl-textfield mdl-js-textfield">
 				    <input class="mdl-textfield__input" name="search" type="text" id="search">
 				    <label class="mdl-textfield__label" for="search">Search</label>
-				  </div>
+				 	</div>
+		      	</div>
+	      			
 	
 				</form>
 		      <div class="mdl-layout-spacer"></div>

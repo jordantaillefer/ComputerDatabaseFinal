@@ -66,7 +66,7 @@
 			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="tableDashboard">
 				<thead>
 					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Username (no multilingual, no sort)</th>
+						<th class="mdl-data-table__cell--non-numeric">Username</th>
 						<th class="mdl-data-table__cell--non-numeric">Role</th>
 						<th class="mdl-data-table__cell--non-numeric">Enabled</th>
 					</tr>
