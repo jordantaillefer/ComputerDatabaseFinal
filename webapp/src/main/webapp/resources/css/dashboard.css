@@ -110,9 +110,16 @@ body:before {
     transition : all .3s ease-out;
     width: 0px;
     float: right;
+    display: flex;
+    align-items : center; 
+    justify-content : center;
 }
 .delete-panel .mdl-button {
 	color : white;
+}
+
+.delete-panel .mdl-button:hover {
+	background-color: var(--secondary-color);
 }
 .delete-checkbox-panel{
     height: 100%;
@@ -147,6 +154,13 @@ body:before {
 }
 body .mdl-card__supporting-text {
     padding: 16px 32px 16px 124px;
+}
+
+.form-delete {
+	width: 32px;
+}
+.button-edit {
+    margin-left: 16px;
 }
 @media (min-width: 1280px){
 		.sidebar {

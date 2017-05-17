@@ -128,11 +128,20 @@
 										<input type="checkbox" id="checkbox-${ computerDto.id }" class="cb mdl-checkbox__input" name="cb"
 										value="${ computerDto.id }">
 									</label> --%>
-									<button id="button-delete-computer" class="mdl-button mdl-js-button"
-									onclick="$.fn.toggleEditMode();">
-									  <i class="material-icons">delete</i>
-									</button>
-									<button id="${ computerDto.id }" class="mdl-button mdl-js-button button-edit-computer">
+									<form id="unique-delete-form" class="form-delete" action="deleteComputer" method="POST">
+										<input type="hidden" name="${_csrf.parameterName}" id="_csrf"
+											value="${_csrf.token}" /> <input type="hidden" name="nbObject"
+											value="${ model.pageComputerDto.nbObjectPerPage }" /> <input
+											type="hidden" name="page" value="${ model.pageComputerDto.page }" />
+										<input type="hidden" name="column" value="${ model.options.column }" />
+										<input type="hidden" name="search" value="${ model.options.search }" />
+										<input type="hidden" name="selection" value="${ computerDto.id }">
+										<button class="button-delete-computer mdl-button mdl-js-button" >
+										  <i class="material-icons">delete</i>
+										</button>
+									</form>
+									
+									<button id="${ computerDto.id }" class="button-edit mdl-button mdl-js-button button-edit-computer">
 									  <i class="material-icons">edit</i>
 									</button>
 									

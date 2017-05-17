@@ -8,6 +8,7 @@
 <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
@@ -47,6 +48,11 @@
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="fab-btn">
+		<a href="/webapp/dashboard"
+			class="btn-floating btn-large waves-effect waves-light "><i
+			class="material-icons">home</i></a>
 	</div>
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 	<script src="<c:url value="/resources/js/materialize.min.js" />"></script>

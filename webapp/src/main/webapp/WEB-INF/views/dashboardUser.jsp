@@ -45,8 +45,8 @@
 <section id="main">
 	<div class="sidebar">
 		<div class="panel-icons">
-		<a href="dashboard?mylocale=en"><img alt="English"  class="picto-flag" src="<c:url value="/resources/img/flag-en.png"/>"></a>
-		<a href="dashboard?mylocale=fr"><img alt="French"  class="picto-flag" src="<c:url value="/resources/img/flag-fr.png"/>"></a>
+		<a href="dashboardUser?mylocale=en"><img alt="English"  class="picto-flag" src="<c:url value="/resources/img/flag-en.png"/>"></a>
+		<a href="dashboardUser?mylocale=fr"><img alt="French"  class="picto-flag" src="<c:url value="/resources/img/flag-fr.png"/>"></a>
 		</div>
 		<div class="menu">
 			<ul class="dashboard-menu">
@@ -67,7 +67,7 @@
 				<thead>
 					<tr>
 						<th class="mdl-data-table__cell--non-numeric"><spring:message code="dashboard.username" /></th>
-						<th class="mdl-data-table__cell--non-numeric">Role</th>
+						<th class="mdl-data-table__cell--non-numeric"><spring:message code="dashboard.role" /></th>
 						<th class="mdl-data-table__cell--non-numeric"><spring:message code="dashboard.enabled" /></th>
 					</tr>
 				</thead>
@@ -76,7 +76,19 @@
 						<tr>
 							<td class="mdl-data-table__cell--non-numeric">${user.username }</td>
 							<td class="mdl-data-table__cell--non-numeric">${user.role }</td>
-							<td class="mdl-data-table__cell--non-numeric">${user.enabled }</td>
+							<td class="mdl-data-table__cell--non-numeric">
+								<c:if test = "${user.enabled }">
+									<div class="circle green">
+										<i class="material-icons">check</i>
+									</div>
+								</c:if>
+								<c:if test = "${!user.enabled }">
+									<div class="circle red">
+										<i class="material-icons">close</i>
+									</div>
+								</c:if>
+								
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
