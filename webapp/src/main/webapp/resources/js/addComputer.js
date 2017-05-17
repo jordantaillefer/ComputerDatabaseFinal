@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 	// ONCHANGE VALIDATION FOR EACH INPUT
 	$('#name').keyup(function(){
-		if(!$('#name').val().match("^[a-zA-Z0-9 -._]+$") || $('#name').val()=="") {
+		if(!$('#name').val().match("^[a-zA-Z0-9 ._-]+$") || $('#name').val()=="") {
 			$('#name').removeClass('valid');
 			$('#name').addClass('invalid');
 			nameisok = false;
