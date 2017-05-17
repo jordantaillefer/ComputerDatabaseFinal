@@ -166,6 +166,13 @@ body .mdl-button--fab.mdl-button--colored:hover {
 		background-color: var(--secondary-color);
 }
 
+
+.mdl-layout__header-row .mdl-navigation.navigation {
+	padding-right: 64px;
+}
+.navigation .waves-effect {
+	margin-right: 16px;
+}
 .dashboard-menu {
     list-style: none;
     height: auto;

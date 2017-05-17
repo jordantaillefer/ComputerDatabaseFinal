@@ -36,10 +36,13 @@ public class DeleteComputerController {
   }
 
   private void doDelete(String selection) {
-    Arrays.asList(selection.split(",")).stream().filter(id -> id.matches("^[0-9]*$"))
-        .collect(Collectors.toList()).forEach(id -> {
-          computerService.deleteComputer(Long.valueOf(id));
-          Page.decrementNbObject();
-        });
+    if (!selection.isEmpty()) {
+      Arrays.asList(selection.split(",")).stream().filter(id -> id.matches("^[0-9]*$"))
+          .collect(Collectors.toList()).forEach(id -> {
+            computerService.deleteComputer(Long.valueOf(id));
+            Page.decrementNbObject();
+          });
+    }
+
   }
 }
