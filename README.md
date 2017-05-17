@@ -7,6 +7,8 @@ Complete and effective, end-to-end web application for managing large computers 
 Front-end design up-to-date and user friendly, making managing easy !
 Back-end secured and using populars technologies.
 
+ [Presentation Google Slide](https://docs.google.com/presentation/d/1LAbHnkdi66NGRyjZNUe3Behql-QySlK2pzwbQZMCEwY/edit?usp=sharing)
+
 ### Developpers 
 * [Taillefer Jordan](https://github.com/jordantaillefer/)
 * [Matthieu Lemaile](https://github.com/MatthieuLemaile/)
