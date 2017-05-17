@@ -44,11 +44,11 @@
 		      <div class="navigation mdl-navigation">
 		        
 		        <sec:authorize access="isAnonymous()"> 
-		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />">Register</a>
-		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />">Login</a>
+		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />"><spring:message code="dashboard.register"/></a>
+		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />"><spring:message code="dashboard.login"/></a>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
-					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />">Logout</a>
+					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />"><spring:message code="dashboard.logout"/></a>
 				</sec:authorize>
 		      </div>
 		    </div>
