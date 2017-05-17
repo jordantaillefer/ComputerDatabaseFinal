@@ -85,9 +85,6 @@ body:before {
     top: 0;
     background-color: var(--main-color);
 }
-.rowComputer {
-	cursor: pointer;
-}
 .panel-header .mdl-textfield {
 	padding: 0;
 }
@@ -116,12 +113,16 @@ body:before {
     float: right;
     display : none;
 	padding-top: 12px;
-	
+}
+.mdl-layout__header-row .mdl-navigation.navigation {
+	padding-right: 64px;
+}
+.navigation .waves-effect {
+	margin-right: 16px;
 }
 .rowComputer:hover:not(.delete-checkbox-panel) .delete-panel {
     width: 108px;
 }
-
 .delete-checkbox-panel.selected {
     transition : width .3s ease-out;
 	 width: 32px;

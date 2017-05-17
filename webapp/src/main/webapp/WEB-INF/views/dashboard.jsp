@@ -10,6 +10,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="page" uri="/WEB-INF/pagination.tld"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/toaster.css" />" rel="stylesheet">
@@ -36,6 +37,16 @@
 	
 				</form>
 		      <div class="mdl-layout-spacer"></div>
+		      <div class="navigation mdl-navigation">
+		        
+		        <sec:authorize access="isAnonymous()"> 
+		        	<a class="waves-effect waves-light btn" href="<c:url value="/addUser" />">Register</a>
+		        <a class="waves-effect waves-light btn" href="<c:url value="/login" />">Login</a>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<a class=" waves-effect waves-light btn" href="<c:url value="/logout" />">Logout</a>
+				</sec:authorize>
+		      </div>
 		    </div>
 		  </header>
 		</div>
