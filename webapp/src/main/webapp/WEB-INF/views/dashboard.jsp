@@ -14,7 +14,9 @@
 <link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/toaster.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/material.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/materialize.min.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 
 </head>
 <body id="dashboard">
@@ -23,21 +25,17 @@
 		  <header class="layout_header">
 		    <div class="mdl-layout__header-row">
 		      <span class="mdl-layout-title"> <a href="dashboard" >Computer Database</a></span>
-		      <form id="search-form" action="#"  method="GET">
-		      		<label class="mdl-button mdl-js-button mdl-button--icon">
-					  <i class="material-icons">search</i>
-					</label>
+		      <form id="search-form" action="#" method="GET">
+	      			<button type="submit" class="mdl-button mdl-js-button mdl-button--icon">
+				  		<i class="material-icons">search</i>
+	      			</button>
 				   <div class="mdl-textfield mdl-js-textfield">
-				    <input class="mdl-textfield__input" type="text" name="search" id="sample1">
-				    <label class="mdl-textfield__label" for="sample1">Search</label>
+				    <input class="mdl-textfield__input" name="search" type="text" id="search">
+				    <label class="mdl-textfield__label" for="search">Search</label>
 				  </div>
 	
 				</form>
 		      <div class="mdl-layout-spacer"></div>
-		      <nav class="mdl-navigation mdl-layout--large-screen-only">
-		      
-		      	
-		      </nav>
 		    </div>
 		  </header>
 		</div>
@@ -56,7 +54,6 @@
 		</div>
 	</div>
 	<div class="card mdl-shadow--2dp">
-		<div class="mdl-card__supporting-text">
 		<div class="container">
 			<h1 id="homeTitle">${ nbComputerDto }
 				<spring:message code="dashboard.computer_found" />
@@ -80,8 +77,8 @@
 				<thead>
 					<tr>
 
-						<th class="sortCol mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending"><a
-							href="dashboard?column=name&page=${ model.pageComputerDto.page }&nbObject=${model.pageComputerDto.nbObjectPerPage}&search=${model.options.search}"><spring:message
+						<th class="sortCol mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending">
+							<a href="dashboard?column=name&page=${ model.pageComputerDto.page }&nbObject=${model.pageComputerDto.nbObjectPerPage}&search=${model.options.search}"><spring:message
 									code="dashboard.computer_name" /></a></th>
 						<th class="sortCol  mdl-data-table__cell--non-numeric"><a
 							href="dashboard?column=introduced&page=${ model.pageComputerDto.page }&nbObject=${model.pageComputerDto.nbObjectPerPage}&search=${model.options.search}"><spring:message
@@ -100,7 +97,18 @@
 						<tr class="rowComputer" id="${ computerDto.id }">
 							
 							<td class="labelName  mdl-data-table__cell--non-numeric">
-								<div class="delete-panel">
+								<div class="delete-checkbox-panel">
+									<label class="cb mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-${ computerDto.id }">
+										<input type="checkbox" id="checkbox-${ computerDto.id }" class="cb mdl-checkbox__input" name="cb"
+										value="${ computerDto.id }">
+									</label>
+								</div>
+								<span>${ computerDto.name }</span>
+							</td>
+							<td class="labelIntroduced  mdl-data-table__cell--non-numeric">${ computerDto.introduced }</td>
+							<td class="labelDiscontinued  mdl-data-table__cell--non-numeric">${ computerDto.discontinued }</td>
+							<td class="mdl-data-table__cell--non-numeric" ><span>${ computerDto.companyName }</span>
+							<div class="delete-panel">
 									<%-- <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-${ computerDto.id }">
 										<input type="checkbox" id="checkbox-${ computerDto.id }" class="cb mdl-checkbox__input" name="cb"
 										value="${ computerDto.id }">
@@ -113,43 +121,46 @@
 									  <i class="material-icons">edit</i>
 									</button>
 									
-								</div>
-								<div class="delete-checkbox-panel">
-									
-								</div>
-								<span>${ computerDto.name }</span>
-							</td>
-							<td class="labelIntroduced  mdl-data-table__cell--non-numeric">${ computerDto.introduced }</td>
-							<td class="labelDiscontinued  mdl-data-table__cell--non-numeric">${ computerDto.discontinued }</td>
-							<td class="mdl-data-table__cell--non-numeric" >${ computerDto.companyName }</td>
+								</div></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		
-			</div>
 		</div>
 	</section>
-	<div class="dashboard-fab-go-to-top">
+	<div class="dashboard-fab dashboard-fab-go-to-top">
 		<button  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
 		onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
 			<i class="material-icons">keyboard_arrow_up</i>
 		</button>
 	</div>
-	<div class="dashboard-fab-go-to-bottom">
+	<div class="dashboard-fab dashboard-fab-go-to-bottom">
 		<button  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
 		onclick="$('html,body').animate({scrollTop: $(document).height()},'slow');return false;">
 			<i class="material-icons">keyboard_arrow_down</i>
 		</button>
 	</div>
-	<div class="dashboard-fab-add">
+	<div class="dashboard-fab dashboard-fab-add">
 		<button id="button-add-computer" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
 		  <i class="material-icons">add</i>
 		</button>
 	</div>
-	<div class="dashboard-fab-delete">
-		<button id="button-delete-computer" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+	<div class="dashboard-fab dashboard-fab-open-delete">
+		<button id="button-open-delete" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+		  <i class="open-delete material-icons">delete</i>
+		  <i class="open-clear material-icons">clear</i>
+		</button>
+	</div>
+	<div class="dashboard-fab dashboard-fab-check-all">
+		<button id="button-check-all" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+		  <i class="material-icons">done_all</i>
+		</button>
+	</div>
+	<div class="dashboard-fab dashboard-fab-delete">
+		<button id="button-delete-computer" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored red"
+			onClick="$.fn.deleteSelected()">
 		  <i class="material-icons">delete</i>
 		</button>
 	</div>
@@ -158,7 +169,7 @@
 	 <footer class="navbar-fixed-bottom">
 		<%@ include file="core/footer.jsp"%>
 		<div class="footer-panel">
-			<ul class="pagination">
+			<ul class="list-mini-fab">
 				<page:link page="0" type="first" label="&laquo;"
 					column="${model.options.column }"
 					search="${ model.options.search }"
@@ -183,7 +194,7 @@
 			</ul>
 
 			<div class="number-page-panel" role="group">
-				<ul class="pagination">
+				<ul class="list-mini-fab">
 					<c:forEach items="${model.nbObjectAvailablePerPage}" var="nbObject">
 						<li
 							<c:if test="${ nbObject  == model.pageComputerDto.nbObjectPerPage}">
@@ -198,6 +209,7 @@
 	</footer> 
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 	<script src="<c:url value="/resources/js/dashboard.js" />"></script>
+	<script src="<c:url value="/resources/js/materialize.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.js" />"></script>
 	<script src="<c:url value="/resources/js/menu.js" />"></script>
 	<script src="<c:url value="/resources/js/material.min.js" />"></script>

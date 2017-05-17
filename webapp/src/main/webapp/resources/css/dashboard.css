@@ -22,10 +22,10 @@ body a {
 	color : white;
 }
 
-.pagination .mini-fab:hover {
+.list-mini-fab .mini-fab:hover {
 	background-color: var(--secondary-color);
 }
-.pagination .mini-fab {
+.list-mini-fab .mini-fab {
 	background-color: white;
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@ body a {
     margin: 0px 4px;
 }
 
-.active .mini-fab {
+.list-mini-fab  .active .mini-fab {
 	background-color: var(--secondary-color);
 }
 .number-page-panel {
@@ -53,7 +53,7 @@ body a {
 }
 
 
-.pagination {
+.list-mini-fab {
     margin: 10px 0;
     list-style: none;
     display: flex;
@@ -88,25 +88,41 @@ body:before {
 .rowComputer {
 	cursor: pointer;
 }
-.delete-panel, .delete-checkbox-panel {
+.panel-header .mdl-textfield {
+	padding: 0;
+}
+
+.delete-panel{
     background-color: var(--main-color);
     height: 100%;
     position: absolute;
-    right: 100%;
-    top: -1px;
-    transition : width .3s ease-out;
+    left: 100%;
+    top: 0px;
+    color : white;
+    transition : all .3s ease-out;
     width: 0px;
     float: right;
-    filter: opacity(0%);
 }
-.rowComputer:hover .delete-panel {
+.delete-panel .mdl-button {
+	color : white;
+}
+.delete-checkbox-panel{
+    height: 100%;
+    position: absolute;
+    right: 100%;
+    top: 0px;
+    transition : all .3s ease-out;
+    width: 0px;
+    float: right;
+    display : none;
+	padding-top: 12px;
+}
+.rowComputer:hover:not(.delete-checkbox-panel) .delete-panel {
     width: 108px;
-    filter: opacity(100%);
 }
 .delete-checkbox-panel.selected {
     transition : width .3s ease-out;
-	 width: 64px;
-    filter: opacity(100%);
+	 width: 32px;
 }
 .delete-panel .mdl-button {
 	min-width: 0px;
@@ -150,6 +166,12 @@ body .mdl-card__supporting-text {
 	    min-height: calc(100vh - 265px);
 	    position : relative;
 	}
+}
+#main {
+	z-index : 1;
+}
+.dashboard-fab {
+	z-index : 2;
 }
 .panel-icons {
     height: 100px;
@@ -214,16 +236,21 @@ body .mdl-button--fab.mdl-button--colored:hover {
 	padding-right : 16px;
     padding-left: 8px;
 	background-color: var(--secondary-color);
-	width: 70%;
+	width: 32%;
 	border-radius : 4px;
 	color : white;
 }
 #search-form .mdl-textfield {
-	width: 95%;
+	width: 92%;
 
+}
+#search-form .mdl-textfield__input {
+	border-bottom : 1px solid white;
 }
 #search-form .mdl-textfield__label {
 	background-color : inherit;
+	color : white;
+	top : 16px;
 }
 
 #search-form .mdl-textfield__label:after {
@@ -249,25 +276,40 @@ th:hover, th:hover * {
 	cursor: pointer;
 }
 
-.dashboard-fab-add{
+.dashboard-fab-add {
 	position: fixed;
 	bottom: 90px;
 	right: 64px;
 }
-.dashboard-fab-delete{
+.dashboard-fab-open-delete {
 	position: fixed;
 	bottom: 160px;
 	right: 64px;
 }
-.dashboard-fab-go-to-bottom{
+.dashboard-fab-check-all {
+	position: fixed;
+	display : none;
+	bottom: 230px;
+	right: 64px;
+}
+.dashboard-fab-delete {
+	position: fixed;
+	bottom: 300px;
+	display : none;
+	right: 64px;
+}
+.dashboard-fab-go-to-bottom {
 	position: fixed;
 	bottom: 90px;
 	left: 64px;
 }
-.dashboard-fab-go-to-top{
+.dashboard-fab-go-to-top {
 	position: fixed;
 	bottom: 160px;
 	left: 64px;
+}
+.open-clear {
+	display : none;
 }
 .mdl-checkbox {
 	transition : all 0.5s ease-in;
